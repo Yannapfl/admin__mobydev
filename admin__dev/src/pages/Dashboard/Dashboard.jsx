@@ -1,5 +1,10 @@
+import './Dashboard.css'
+
+
 export default function Dashboard() {
     return(
-        <p>Dashboard</p>
+        <div className="dashboard">
+            <p>Dashboard</p>
+        </div>
     )
 }

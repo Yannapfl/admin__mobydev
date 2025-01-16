@@ -1,0 +1,39 @@
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-left img {
+    padding-left: 32px;
+}
+
+.header form {
+    padding: 0;
+}
+
+.header input {
+    margin-left: 0;
+    width: 449px;
+}
+
+.search-input {
+    position: relative;
+}
+
+.btn-exit {
+    padding-right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: transparent;
+}
+
+.exit p {
+    padding-right: 8px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #8F92A1
+}

@@ -32,7 +32,7 @@ export default function LoginPage() {
 
     return (
         <div className='login-page'>
-            <img src={logo} alt='logo-icon' className='logo-icon'/>
+            <img src={logo} alt='logo-icon' className='logo-icon br-25'/>
             <form className='form login-form' onSubmit={handleSubmit}>
                 <div className='text-center'>
                     <h1>Добро пожаловать</h1>
@@ -55,7 +55,7 @@ export default function LoginPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className='btn-eye' type='button' onClick={handleTogglePassword}>
+                    <button className='btn-img' type='button' onClick={handleTogglePassword}>
                         <img src={eye} alt='eye' />
                     </button>
                 </div>

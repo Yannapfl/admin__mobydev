@@ -20,7 +20,7 @@ export default function LoginPage() {
         dispatch(loginUser({ email, password}))
             .unwrap()
             .then(() => {
-                navigate('/dashboard')
+                navigate('/projects')
             })
             .catch((err) => {
                 console.error('Ошибка авторизации', err)
@@ -55,7 +55,7 @@ export default function LoginPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className='btn-img' type='button' onClick={handleTogglePassword}>
+                    <button className='btn-img position-a-img ' type='button' onClick={handleTogglePassword}>
                         <img src={eye} alt='eye' />
                     </button>
                 </div>

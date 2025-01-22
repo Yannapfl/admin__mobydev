@@ -1,0 +1,55 @@
+.cards-categories {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 260px);
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.cards-categories ul {
+    margin: 0;
+    padding: 0;
+    display: contents;
+}
+
+.card-category {
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff; 
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.card-category:hover {
+    color: #0052CC; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.card-category-img-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-category-img-left {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    color: #9CA3AF; 
+    font-size: 12px;
+    gap: 4px;
+}
+
+.card-category-actions-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-category-actions-btn button {
+    padding: 16px 0 0 16px;
+}

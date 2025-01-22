@@ -13,7 +13,7 @@ export default function Header() {
         <form className="search" onSubmit={() => alert("Поиск")}>
           <div className="search-input">
             <input type="text" name="text" placeholder="Поиск" />
-            <button className="btn-img" type="submit">
+            <button className="btn-img position-a-img " type="submit">
               <img src={loupe} alt="loupe" />
             </button>
           </div>

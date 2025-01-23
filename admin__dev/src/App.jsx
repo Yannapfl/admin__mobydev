@@ -10,6 +10,7 @@ import Users from "./pages/Users/Useres";
 import Roles from "./pages/Roles/Roles";
 import Genres from "./pages/Genres/Genres";
 import Ages from "./pages/Ages/Ages";
+import ProjectInfo from "./pages/Projects/ProjectInfo/ProjectInfo.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           }
         >
           <Route path="projects" element={<Projects />} />
+          <Route path="projects/:projectId" element={<ProjectInfo />} />
           <Route path="home-projects" element={<HomeProjects />} />
           <Route path="categories" element={<Categories />} />
           <Route path="users" element={<Users />} />

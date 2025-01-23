@@ -18,7 +18,7 @@ export default function DropdownFilter({
 
   return (
     <div className="dropdown-filter">
-      <span className="dropdown-label">{label}:</span>
+      <span className="dropdown-label">{label}</span>
       <div className="dropdown" onClick={() => setIsOpen(!isOpen)}>
         <span className="dropdown-selected">{selectedOption}</span>
         <img src={arrow} alt='arrow-down' />

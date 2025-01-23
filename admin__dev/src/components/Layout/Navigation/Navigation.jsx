@@ -6,7 +6,6 @@ export default function Navigation() {
     const [icons, setIcons] = useState({});
   
     useEffect(() => {
-      // Загружаем все SVG-файлы
       const loadIcons = async () => {
         const icons = await Promise.all([
           import("../../../assets/icons/nav_projects.svg?raw"),

@@ -1,0 +1,25 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.dropdown-year {
+    font-size: 14px;
+}
+
+.cards-projects-group {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 260px);
+    gap: 18px;
+    box-sizing: border-box;
+}
+

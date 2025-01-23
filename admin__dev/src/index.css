@@ -26,6 +26,20 @@ h2 {
   font-weight: 700;
 }
 
+h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
 a {
   font-weight: 400;
   font-size: 12px;
@@ -70,6 +84,17 @@ input {
 
 li {
   list-style: none;
+}
+
+.background-grey {
+  width: 872px;
+  flex: 1;
+  margin: 0;
+  padding: 40px 24px;
+
+  box-sizing: border-box;
+  background-color: rgba(143, 146, 161, 0.5);
+  border-radius: 24px 24px 0 0;
 }
 
 .br-25 {

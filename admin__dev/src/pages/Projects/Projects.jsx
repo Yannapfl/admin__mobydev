@@ -4,11 +4,14 @@ import DropdownFilter from "../../components/DropdownFilter/DropdownFilter";
 import clock from "../../assets/icons/clock.svg";
 import CardProjects from "../../components/CardProjects/CardProjects";
 import { mocksProjects } from "../../components/CardProjects/mocksProjects";
+import { useContext } from "react";
+import ProjectsContext from "./ProjectsContext";
 
 const mocksSortFilter = ["Популярные", "Новинки", "По рейтингу", "Все"];
 const mocksTypeFilter = ['Фильмы и сериалы', 'Фильмы', 'Сериалы'];
 
 export default function Projects() {
+  const { projects } = useContext(ProjectsContext);
   const handleFilterChange = (filterName) => {
     console.log(`Выбран фильтр: ${filterName}`);
   };
@@ -58,7 +61,7 @@ export default function Projects() {
         </div>
       </div>
       <div className="cards-projects-group">
-        {mocksProjects.map((project) => (
+        {projects.map((project) => (
           <CardProjects
             key={project.id}
             project={project}

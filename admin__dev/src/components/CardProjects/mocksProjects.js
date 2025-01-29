@@ -61,19 +61,23 @@ export const mocksProjects = [
         video: {
             seasons: 3,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 5, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 6, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 7, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 8, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 9, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 10, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 3, episode: 1, videoId: 'vPQy7H-i3ww&t'}
+                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t00000'},
+                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t10'},
+                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t11'},
+                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t12'},
+                { seasons: 1, episode: 5, videoId: 'vPQy7H-i3ww&t13'},
+                { seasons: 1, episode: 6, videoId: 'vPQy7H-i3ww&t14'},
+                { seasons: 1, episode: 7, videoId: 'vPQy7H-i3ww&t15'},
+                { seasons: 1, episode: 8, videoId: 'vPQy7H-i3ww&t16'},
+                { seasons: 1, episode: 9, videoId: 'vPQy7H-i3ww&t17'},
+                { seasons: 1, episode: 10, videoId: 'vPQy7H-i3ww&t18'},
+                { seasons: 1, episode: 11, videoId: 'vPQy7H-i3ww&t19'},
+                { seasons: 1, episode: 12, videoId: 'vPQy7H-i3ww&t1820'},
+                { seasons: 1, episode: 13, videoId: 'vPQy7H-i3ww&t185'},
+                { seasons: 1, episode: 14, videoId: 'vPQy7H-i3ww&t185'},
+                { seasons: 2, episode: 1, videoId: 'vPQy7H-i3ww&t19'},
+                { seasons: 2, episode: 2, videoId: 'vPQy7H-i3ww&t20'},
+                { seasons: 3, episode: 1, videoId: 'vPQy7H-i3ww&t21'}
             ]
         },
         media: {
@@ -104,7 +108,7 @@ export const mocksProjects = [
         createdBy: 'Admin',
         video: {
             seasons: 0,
-            episodes: []
+            episodes: {videoId: 'vPQy7H-i3ww&t' }
         },
         media: {
             coverImage: coverImage3,

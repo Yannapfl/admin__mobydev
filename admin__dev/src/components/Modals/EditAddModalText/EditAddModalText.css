@@ -1,0 +1,13 @@
+.modal-form {
+    padding: 32px;
+  }
+  
+  .modal-content input {
+    margin-bottom: 32px;
+    width: 510px;
+    color: #171717
+  }
+  
+  .modal-content input ::placeholder {
+    color: rgba(143, 146, 161, 1)
+  }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { mocksProjects } from "../../components/CardProjects/mocksProjects";
 import PropTypes from "prop-types";
 
@@ -10,16 +10,20 @@ export const ProjectsProvider = ({ children }) => {
     const addProject = (newProject) => {
       setProjects([...projects, { ...newProject, id: projects.length + 1 }]);
     };
+
+    const removeProject = (id) => {
+      setProjects(projects.filter((project) => project.id !== id))
+    }
   
     return (
-      <ProjectsContext.Provider value={{ projects, addProject }}>
+      <ProjectsContext.Provider value={{ projects, addProject, removeProject }}>
         {children}
       </ProjectsContext.Provider>
     );
-  };
+};
   
-  export const useProjects = () => useContext(ProjectsContext);
+export default ProjectsContext;
 
-  ProjectsProvider.propTypes = {
+ProjectsProvider.propTypes = {
     children: PropTypes.node.isRequired,
-  };
+};

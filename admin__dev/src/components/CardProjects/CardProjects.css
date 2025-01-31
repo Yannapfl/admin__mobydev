@@ -68,3 +68,33 @@
     height: 16px;
 }
 
+.card-projects-img-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-projects-img-left {
+    height: 16px;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    color: #9CA3AF; 
+    font-size: 12px;
+    gap: 4px;
+}
+
+.card-projects-img-left img {
+    width: 16px;
+    height: 16px;
+}
+
+.card-projects-actions-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-projects-actions-btn button {
+    padding: 16px 0 0 16px;
+}

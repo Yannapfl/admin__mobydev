@@ -11,6 +11,7 @@ import Roles from "./pages/Roles/Roles";
 import Genres from "./pages/Genres/Genres";
 import Ages from "./pages/Ages/Ages";
 import ProjectInfo from "./pages/Projects/ProjectInfo/ProjectInfo.jsx";
+import AddEditProject from "./pages/Projects/AddEditProject/AddEditProject.jsx";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
         >
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:projectId" element={<ProjectInfo />} />
+          <Route path="projects/add" element={<AddEditProject mode="add" />} />
+          <Route path="projects/edit/:projectId" element={<AddEditProject mode="edit" />} />
           <Route path="home-projects" element={<HomeProjects />} />
           <Route path="categories" element={<Categories />} />
           <Route path="users" element={<Users />} />

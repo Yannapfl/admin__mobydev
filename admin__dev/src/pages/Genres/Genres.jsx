@@ -1,88 +1,68 @@
-import { useState } from "react";
-import { mocksGenres } from "./mocksGenres";
-import ContentPageFactory from "../../components/ContentPageFactory/ContentPageFactory";
-import { useDeleteModal } from "../../components/Modals/ModalDelete/useDeleteModal";
-import { ModalDelete } from "../../components/Modals/ModalDelete/ModalDelete";
-import { EditAddModal } from "../../components/Modals/EditAddModalText/EditAddModalText";
+import { useContext } from "react";
+import plus from "../../assets/icons/math-plus.svg";
+import ContentCard from "../../components/ContentCard/ContentCard";
+import DataContext from "../../contexts/DataContext";
+import { ModalFactory } from "../../components/Modals/ModalFactory";
+import { useModalManager } from "../../components/Modals/useModalManager";
 
-export default function Genres() {
-  const [genres, setGenres] = useState(mocksGenres);
-  const [text, setText] = useState("");
-  const [editTarget, setEditTarget] = useState(null);
-  const { isOpen, target, openModal, closeModal } = useDeleteModal();
-  const [isEditAddModalOpen, setEditAddModalOpen] = useState(false);
-
-  const openAddModal = () => {
-    setText("");
-    setEditAddModalOpen(true);
-  };
-
-  const openEditModal = (genre) => {
-    setText(genre.label);
-    setEditTarget(genre);
-    setEditAddModalOpen(true);
-  };
-  const handleSaveGenre = () => {
-    if (!text.trim()) return;
-
-    if (editTarget) {
-      setGenres(
-        genres.map((g) =>
-          g.label === editTarget.label ? { ...g, label: text } : g
-        )
-      );
-    } else {
-      setGenres([...genres, { label: text, image: null }]);
-    }
-
-    setEditAddModalOpen(false);
-    setEditTarget(null);
-    setText("");
-  };
-
-  const handleDelete = () => {
-    setGenres(genres.filter((g) => g.label !== target.label));
-    closeModal();
-  };
-
-  const genresWithActions = genres.map((genre) => ({
-    ...genre,
-    actions: [
-      { icon: "edit", handler: () => openEditModal(genre) },
-      { icon: "delete", handler: () => openModal(genre) },
-    ],
-  }));
+export default function Genres() {  
+  const { data, addEntity, updateEntity, deleteEntity } = useContext(DataContext);
+  const { modalType, modalProps, openModal, closeModal } = useModalManager();
 
   return (
     <div className="genres">
-      <ContentPageFactory
-        title="Жанры"
-        cardsContent={genresWithActions}
-        addModal={openAddModal}
+      <div className="page-header">
+        <div className="page-headline">
+          <h1>Жанры</h1>
+          <p>{data.genres.length}</p>
+        </div>
+        <button className="btn btn-headline" onClick={() => openModal('image', { mode: 'add', entity: null })}>
+          <div className="btn-items-headline">
+            <img src={plus} alt="plus" />
+            <p>Добавить</p>
+          </div>
+        </button>
+      </div>
+      <div className="cards-group">
+        {data.genres.map((genre) => (
+          <ContentCard
+            card={genre}
+            key={genre.id}
+            onEdit={() => openModal('image', { mode: 'edit', entity: genre })}
+            onDelete={() => openModal('delete', { label: 'жанр', onConfirm: () => {
+              deleteEntity('genres', genre.id);
+              closeModal();
+            } })}
+          />
+        ))}
+      </div>
+
+      {modalType && (
+        <ModalFactory
+        type={modalType}
+        modalProps={{
+          ...modalProps,
+          labelPrepositional: 'жанра',
+          labelGenetive: 'жанр',
+          title: "жанр",
+          onAdd: (newGenre) => {
+            addEntity('genres', newGenre);
+            closeModal();
+          },
+          onUpdate: (updatedGenre) => {
+            updateEntity('genres', updatedGenre);
+            closeModal();
+          },
+          onDelete: () => {
+            deleteEntity('genres', modalProps.entity?.id);
+            closeModal();
+          },
+          closeModal,
+        }}
       />
-
-      {isOpen && (
-        <ModalDelete
-          label="жанр"
-          onConfirm={handleDelete}
-          closeModal={closeModal}
-        />
-      )}
-
-      {isEditAddModalOpen && (
-        <EditAddModal
-          mode={editTarget ? "edit" : "add"}
-          labelGenetive="жанр"
-          labelPrepositional="жанра"
-          text={text}
-          setText={setText}
-          onSubmit={handleSaveGenre}
-          onClose={() => {
-            setEditAddModalOpen(false);
-            setEditTarget(null);
-          }}
-        />
-      )}
+    )}
+      
     </div>
+
   );
 }

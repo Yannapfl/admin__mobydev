@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./ProjectInfo.css";
-import { mocksProjects } from "../../../components/CardProjects/mocksProjects";
+import { mocksProjects } from "../../../mocks/mocksProjects";
 import clock from "../../../assets/icons/black_clock.svg";
 import television from "../../../assets/icons/info_categories.svg";
 import clapperBoard from "../../../assets/icons/clapper-board.svg";
@@ -12,7 +12,7 @@ import star from "../../../assets/icons/star.svg";
 import share from "../../../assets/icons/share.svg";
 import wastebasket from "../../../assets/icons/wastebasket_white.svg";
 import { useContext, useState } from "react";
-import ProjectsContext from "../ProjectsContext";
+import ProjectsContext from "../../../contexts/ProjectsContext";
 import { useDeleteModal } from "../../../components/Modals/ModalDelete/useDeleteModal";
 import { ModalDelete } from "../../../components/Modals/ModalDelete/ModalDelete";
 

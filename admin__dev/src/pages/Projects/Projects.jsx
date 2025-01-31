@@ -3,9 +3,9 @@ import plus from "../../assets/icons/math-plus.svg";
 import DropdownFilter from "../../components/DropdownFilter/DropdownFilter";
 import clock from "../../assets/icons/clock.svg";
 import CardProjects from "../../components/CardProjects/CardProjects";
-import { mocksProjects } from "../../components/CardProjects/mocksProjects";
+import { mocksProjects } from "../../mocks/mocksProjects";
 import { useContext } from "react";
-import ProjectsContext from "./ProjectsContext";
+import ProjectsContext from "../../contexts/ProjectsContext";
 
 const mocksSortFilter = ["Популярные", "Новинки", "По рейтингу", "Все"];
 const mocksTypeFilter = ['Фильмы и сериалы', 'Фильмы', 'Сериалы'];

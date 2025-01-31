@@ -1,97 +1,66 @@
-import "../../components/Modals/Modals.css";
-import { useContext, useState } from "react";
-import CategoriesContext from "./CategoriesContext";
-import { useDeleteModal } from "../../components/Modals/ModalDelete/useDeleteModal";
-import { ModalDelete } from "../../components/Modals/ModalDelete/ModalDelete";
-import { EditAddModal } from "../../components/Modals/EditAddModalText/EditAddModalText";
-import ContentPageFactory from "../../components/ContentPageFactory/ContentPageFactory";
+import { useContext } from "react";
+import DataContext from "../../contexts/DataContext";
+import { useModalManager } from "../../components/Modals/useModalManager";
+import plus from '.././../assets/icons/math-plus.svg'
+import ContentCard from "../../components/ContentCard/ContentCard";
+import { ModalFactory } from "../../components/Modals/ModalFactory";
 
 export default function Categories() {
-  const { categories, addCategory, removeCategory, editCategory } = useContext(CategoriesContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState("add");
-  const [currentCategory, setCurrentCategory] = useState(null);
-  const [newCategoryName, setNewCategoryName] = useState("");
-  const { isOpen, target, openModal, closeModal: closeDeleteModal } = useDeleteModal();
-
-  const closeAllModals = () => {
-    setIsModalOpen(false);
-    closeDeleteModal();
-  };
-
-  const openAddModal = () => {
-    setModalMode("add");
-    setNewCategoryName("");
-    setIsModalOpen(true);
-  };
-
-  const openEditModal = (category) => {
-    setModalMode("edit");
-    setCurrentCategory(category);
-    setNewCategoryName(category.label);
-    setIsModalOpen(true);
-  };
-
-  const handleSubmit = () => {
-    if (newCategoryName.trim() === "") {
-      alert("Название категории не может быть пустым");
-      return;
-    }
-
-    if (modalMode === "add") {
-      addCategory({
-        value: newCategoryName.toLowerCase(),
-        label: newCategoryName,
-      });
-    } else {
-      editCategory(currentCategory.value, { label: newCategoryName });
-    }
-
-    closeAllModals();
-  };
-
-  const cardsContent = categories.map((category) => ({
-    ...category,
-    actions: [
-      {
-        icon: "edit",
-        handler: () => openEditModal(category),
-      },
-      {
-        icon: "delete",
-        handler: () => openModal(category),
-      },
-    ],
-  }));
+  const { data, addEntity, updateEntity, deleteEntity } = useContext(DataContext);
+  const { modalType, modalProps, openModal, closeModal } = useModalManager();
 
   return (
-    <>
-      <ContentPageFactory
-        title="Категории"
-        cardsContent={cardsContent}
-        addModal={openAddModal}
-      />
-      {isModalOpen && (
-        <EditAddModal
-          mode={modalMode}
-          labelGenetive="категорию"
-          labelPrepositional="категории"
-          text={newCategoryName}
-          setText={setNewCategoryName}
-          onSubmit={handleSubmit}
-          onClose={closeAllModals}
-        />
-      )}
-      {isOpen && (
-        <ModalDelete
-          label="категорию"
-          onConfirm={() => {
-            removeCategory(target.value);
-            closeAllModals();
+    <div className="categories-page">
+      <div className="page-header">
+              <div className="page-headline">
+                <h1>Категории</h1>
+                <p>{data.categories.length}</p>
+              </div>
+              <button className="btn btn-headline" onClick={() => openModal('text', { mode: 'add', entity: null })}>
+                <div className="btn-items-headline">
+                  <img src={plus} alt="plus" />
+                  <p>Добавить</p>
+                </div>
+              </button>
+            </div>
+      <div className="cards-group">
+        {data.categories.map((category) => (
+          <ContentCard
+            card={category}
+            key={category.id}
+            onEdit={() => openModal('text', { mode: 'edit', entity: category})}
+            onDelete={() => openModal('delete', { label: 'категорию', onConfirm: () => {
+              deleteEntity('categories', category.id);
+              closeModal();
+            } })}
+          />
+        ))}
+      </div>
+
+      {modalType && (
+        <ModalFactory
+          type={modalType}
+          modalProps={{
+            ...modalProps,
+          labelPrepositional: 'категории',
+          labelGenetive: 'категорию',
+          title: "категорию",
+          onAdd: (newCategory) => {
+            addEntity('categories', newCategory);
+            closeModal();
+          },
+          onUpdate: (updatedCategory) => {
+            updateEntity('categories', updatedCategory);
+            closeModal();
+          },
+          onDelete: () => {
+            deleteEntity('categories', modalProps.entity?.id);
+            closeModal();
+          },
+          closeModal,
           }}
-          closeModal={closeAllModals}
         />
       )}
-    </>
+    </div>
   );
 }

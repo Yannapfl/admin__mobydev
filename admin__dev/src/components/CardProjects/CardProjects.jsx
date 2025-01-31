@@ -5,7 +5,7 @@ import wastebasket from '../../assets/icons/wastebasket.svg'
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import ProjectsContext from '../../pages/Projects/ProjectsContext';
+import ProjectsContext from '../../contexts/ProjectsContext';
 import { useDeleteModal } from '../Modals/ModalDelete/useDeleteModal';
 import { ModalDelete } from '../Modals/ModalDelete/ModalDelete';
 
@@ -25,6 +25,14 @@ export default function CardProjects({ project }) {
         e.preventDefault();
         if (!isOpen) {
             navigate(`/projects/${project.id}`)
+        }
+    }
+
+    const handleEdit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!isOpen) {
+            navigate(`/projects/edit/${project.id}`)
         }
     }
 
@@ -57,13 +65,13 @@ export default function CardProjects({ project }) {
                     </p>
                 )}
             </div>
-            <div className='card-category-img-group m-0'>
-                <div className="card-category-img-left">
+            <div className='card-projects-img-group m-0'>
+                <div className="card-projects-img-left">
                     <img src={eye} alt="eye" />
                     <p className="m-0">{views.toLocaleString('ru-RU')}</p>
                 </div>
-                <div className="card-category-actions-btn m-0">
-                    <button className="btn-img">
+                <div className="card-projects-actions-btn m-0">
+                    <button className="btn-img" onClick={handleEdit}>
                         <img src={pencil} alt="edit" />
                     </button>
                     <button 

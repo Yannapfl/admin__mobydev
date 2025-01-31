@@ -1,7 +1,0 @@
-.cards-group {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 260px);
-    gap: 18px;
-    box-sizing: border-box;
-}

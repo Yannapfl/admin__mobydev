@@ -3,13 +3,22 @@ import Header from "./Header/Header";
 import { Outlet, useLocation } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import { CategoriesProvider } from "../../pages/Categories/CategoriesContext";
-import { ProjectsProvider } from "../../pages/Projects/ProjectsContext";
+import { ProjectsProvider } from "../../contexts/ProjectsContext";
+import { DataProvider } from "../../contexts/DataContext";
 
 export default function Layout() {
   const location = useLocation();
 
-  const isNavigationPage = ['/projects', '/home-projects', '/categories', '/users', '/roles', '/genres', '/ages'].includes(location.pathname);
-  const mainClassName = isNavigationPage ? 'content-nav' : 'm-0';
+  const isNavigationPage = [
+    "/projects",
+    "/home-projects",
+    "/categories",
+    "/users",
+    "/roles",
+    "/genres",
+    "/ages",
+  ].includes(location.pathname);
+  const mainClassName = isNavigationPage ? "content-nav" : "m-0";
 
   return (
     <div className="layout">
@@ -17,11 +26,13 @@ export default function Layout() {
       <div className="flex-body">
         <Navigation />
         <main className={mainClassName}>
-          <CategoriesProvider>
-            <ProjectsProvider>
-              <Outlet />
-            </ProjectsProvider>
-          </CategoriesProvider>
+          <DataProvider>
+            <CategoriesProvider>
+              <ProjectsProvider>
+                <Outlet />
+              </ProjectsProvider>
+            </CategoriesProvider>
+          </DataProvider>
         </main>
       </div>
     </div>

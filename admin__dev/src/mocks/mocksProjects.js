@@ -12,7 +12,7 @@ export const mocksProjects = [
         id: 1,
         title: 'Айдар',
         categories: ['Телехикая','Мультфильм'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -24,12 +24,12 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T18:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 1,
+            seasonCount: 1,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
+                { id: 1, season: 1, episode: 1, videoId: 'If6h-WtLyrM?si=HQ_tIIc8OWArYLFL'},
+                { id: 2, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
+                { id: 3, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
+                { id: 4,  season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
             ]
         },
         media: {
@@ -47,7 +47,7 @@ export const mocksProjects = [
         id: 2,
         title: 'Суперкөлік Самұрық',
         categories: ['Телехикая','Мультсериал'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -59,30 +59,40 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T18:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 3,
+            seasonCount: 3,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t00000'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t10'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t11'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t12'},
-                { seasons: 1, episode: 5, videoId: 'vPQy7H-i3ww&t13'},
-                { seasons: 1, episode: 6, videoId: 'vPQy7H-i3ww&t14'},
-                { seasons: 1, episode: 7, videoId: 'vPQy7H-i3ww&t15'},
-                { seasons: 1, episode: 8, videoId: 'vPQy7H-i3ww&t16'},
-                { seasons: 1, episode: 9, videoId: 'vPQy7H-i3ww&t17'},
-                { seasons: 1, episode: 10, videoId: 'vPQy7H-i3ww&t18'},
-                { seasons: 1, episode: 11, videoId: 'vPQy7H-i3ww&t19'},
-                { seasons: 1, episode: 12, videoId: 'vPQy7H-i3ww&t1820'},
-                { seasons: 1, episode: 13, videoId: 'vPQy7H-i3ww&t185'},
-                { seasons: 1, episode: 14, videoId: 'vPQy7H-i3ww&t185'},
-                { seasons: 2, episode: 1, videoId: 'vPQy7H-i3ww&t19'},
-                { seasons: 2, episode: 2, videoId: 'vPQy7H-i3ww&t20'},
-                { seasons: 3, episode: 1, videoId: 'vPQy7H-i3ww&t21'}
+                { id: 12, season: 1, episode: 1, videoId: 'vPQy7H-i3ww&t00000'},
+                { id: 13, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t10'},
+                { id: 14, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t11'},
+                { id: 15, season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t12'},
+                { id: 16, season: 1, episode: 5, videoId: 'vPQy7H-i3ww&t13'},
+                { id: 17, season: 1, episode: 6, videoId: 'vPQy7H-i3ww&t14'},
+                { id: 18, season: 1, episode: 7, videoId: 'vPQy7H-i3ww&t15'},
+                { id: 19, season: 1, episode: 8, videoId: 'vPQy7H-i3ww&t16'},
+                { id: 20, season: 1, episode: 9, videoId: 'vPQy7H-i3ww&t17'},
+                { id: 21, season: 1, episode: 10, videoId: 'vPQy7H-i3ww&t18'},
+                { id: 22, season: 1, episode: 11, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 23, season: 1, episode: 12, videoId: 'vPQy7H-i3ww&t1820'},
+                { id: 24, season: 1, episode: 13, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 25, season: 1, episode: 14, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 26, season: 2, episode: 1, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 27, season: 2, episode: 2, videoId: 'vPQy7H-i3ww&t20'},
+                { id: 28, season: 3, episode: 1, videoId: 'vPQy7H-i3ww&t21'}
             ]
         },
         media: {
             coverImage: coverImage2,
-            screenShots: [ screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2 ]
+            screenShots: [ 
+                {image: screen2, id: 1},
+                {image: screen2, id: 2},
+                {image: screen2, id: 3},
+                {image: screen2, id: 4},
+                {image: screen2, id: 5},
+                {image: screen2, id: 6},
+                {image: screen2, id: 7},
+                {image: screen2, id: 8},
+                {image: screen2, id: 9},
+                ]
         },
         stats: {
             views: 10329,
@@ -95,7 +105,7 @@ export const mocksProjects = [
         id: 3,
         title: 'Каникулы off-line 2',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 180,
@@ -107,9 +117,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T18:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: {videoId: 'vPQy7H-i3ww&t' }
-        },
+            videoId: 'zxLBzhENeMg?si=075hPJTM0e2OoxV6',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage3,
             screenShots: []
@@ -125,7 +136,7 @@ export const mocksProjects = [
         id: 4,
         title: 'Ойыншықтар',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 60,
@@ -137,9 +148,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage4,
             screenShots: []
@@ -155,7 +167,7 @@ export const mocksProjects = [
         id: 5,
         title: 'Айдар',
         categories: ['Телехикая','Мультфильм'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -167,12 +179,12 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 1,
+            seasonCount: 1,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
+                { id: 5, season: 1, episode: 1, videoId: 'If6h-WtLyrM?si=HQ_tIIc8OWArYLFL'},
+                { id: 6, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
+                { id: 7, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
+                { id: 8,  season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
             ]
         },
         media: {
@@ -190,7 +202,7 @@ export const mocksProjects = [
         id: 6,
         title: 'Ойыншықтар',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 60,
@@ -202,9 +214,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage6,
             screenShots: []
@@ -220,7 +233,7 @@ export const mocksProjects = [
         id: 7,
         title: 'Суперкөлік Самұрық',
         categories: ['Телехикая','Мультсериал'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -232,26 +245,40 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 3,
+            seasonCount: 3,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 5, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 6, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 7, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 8, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 9, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 10, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 3, episode: 1, videoId: 'vPQy7H-i3ww&t'}
+                { id: 120, season: 1, episode: 1, videoId: 'vPQy7H-i3ww&t00000'},
+                { id: 130, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t10'},
+                { id: 140, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t11'},
+                { id: 150, season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t12'},
+                { id: 160, season: 1, episode: 5, videoId: 'vPQy7H-i3ww&t13'},
+                { id: 170, season: 1, episode: 6, videoId: 'vPQy7H-i3ww&t14'},
+                { id: 180, season: 1, episode: 7, videoId: 'vPQy7H-i3ww&t15'},
+                { id: 190, season: 1, episode: 8, videoId: 'vPQy7H-i3ww&t16'},
+                { id: 200, season: 1, episode: 9, videoId: 'vPQy7H-i3ww&t17'},
+                { id: 210, season: 1, episode: 10, videoId: 'vPQy7H-i3ww&t18'},
+                { id: 220, season: 1, episode: 11, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 230, season: 1, episode: 12, videoId: 'vPQy7H-i3ww&t1820'},
+                { id: 240, season: 1, episode: 13, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 250, season: 1, episode: 14, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 260, season: 2, episode: 1, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 270, season: 2, episode: 2, videoId: 'vPQy7H-i3ww&t20'},
+                { id: 280, season: 3, episode: 1, videoId: 'vPQy7H-i3ww&t21'}
             ]
         },
         media: {
             coverImage: screen2,
-            screenShots: [ screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2 ]
+            screenShots: [ 
+                {image: screen2, id: 11},
+                {image: screen2, id: 12},
+                {image: screen2, id: 13},
+                {image: screen2, id: 14},
+                {image: screen2, id: 15},
+                {image: screen2, id: 16},
+                {image: screen2, id: 17},
+                {image: screen2, id: 18},
+                {image: screen2, id: 19},
+            ]
         },
         stats: {
             views: 10329,
@@ -264,7 +291,7 @@ export const mocksProjects = [
         id: 8,
         title: 'Каникулы off-line 2',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 180,
@@ -276,9 +303,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage8,
             screenShots: []
@@ -294,7 +322,7 @@ export const mocksProjects = [
         id: 9,
         title: 'Айдар',
         categories: ['Телехикая','Мультфильм'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -306,12 +334,12 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 1,
+            seasonCount: 1,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
+                { id: 1100, season: 1, episode: 1, videoId: 'If6h-WtLyrM?si=HQ_tIIc8OWArYLFL'},
+                { id: 2200, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
+                { id: 3300, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
+                { id: 4400,  season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
             ]
         },
         media: {
@@ -329,7 +357,7 @@ export const mocksProjects = [
         id: 10,
         title: 'Ойыншықтар',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 60,
@@ -341,9 +369,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage6,
             screenShots: []
@@ -359,7 +388,7 @@ export const mocksProjects = [
         id: 11,
         title: 'Суперкөлік Самұрық',
         categories: ['Телехикая','Мультсериал'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -371,26 +400,40 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 3,
+            seasonCount: 3,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 5, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 6, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 7, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 8, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 9, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 10, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 3, episode: 1, videoId: 'vPQy7H-i3ww&t'}
+                { id: 1220, season: 1, episode: 1, videoId: 'vPQy7H-i3ww&t00000'},
+                { id: 1330, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t10'},
+                { id: 1440, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t11'},
+                { id: 1550, season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t12'},
+                { id: 1660, season: 1, episode: 5, videoId: 'vPQy7H-i3ww&t13'},
+                { id: 1770, season: 1, episode: 6, videoId: 'vPQy7H-i3ww&t14'},
+                { id: 1880, season: 1, episode: 7, videoId: 'vPQy7H-i3ww&t15'},
+                { id: 1990, season: 1, episode: 8, videoId: 'vPQy7H-i3ww&t16'},
+                { id: 2020, season: 1, episode: 9, videoId: 'vPQy7H-i3ww&t17'},
+                { id: 2121, season: 1, episode: 10, videoId: 'vPQy7H-i3ww&t18'},
+                { id: 2222, season: 1, episode: 11, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 2323, season: 1, episode: 12, videoId: 'vPQy7H-i3ww&t1820'},
+                { id: 2424, season: 1, episode: 13, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 2525, season: 1, episode: 14, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 2626, season: 2, episode: 1, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 2727, season: 2, episode: 2, videoId: 'vPQy7H-i3ww&t20'},
+                { id: 2828, season: 3, episode: 1, videoId: 'vPQy7H-i3ww&t21'}
             ]
         },
         media: {
             coverImage: screen2,
-            screenShots: [ screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2 ]
+            screenShots: [ 
+                {image: screen2, id: 1},
+                {image: screen2, id: 2},
+                {image: screen2, id: 3},
+                {image: screen2, id: 4},
+                {image: screen2, id: 5},
+                {image: screen2, id: 6},
+                {image: screen2, id: 7},
+                {image: screen2, id: 8},
+                {image: screen2, id: 9},
+            ]
         },
         stats: {
             views: 10329,
@@ -403,7 +446,7 @@ export const mocksProjects = [
         id: 12,
         title: 'Каникулы off-line 2',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 180,
@@ -415,9 +458,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage8,
             screenShots: []
@@ -433,7 +477,7 @@ export const mocksProjects = [
         id: 13,
         title: 'Айдар',
         categories: ['Телехикая','Мультфильм'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -445,12 +489,12 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 1,
+            seasonCount: 1,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
+                { id: 1777, season: 1, episode: 1, videoId: 'If6h-WtLyrM?si=HQ_tIIc8OWArYLFL'},
+                { id: 2777, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
+                { id: 3777, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
+                { id: 4777,  season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
             ]
         },
         media: {
@@ -468,7 +512,7 @@ export const mocksProjects = [
         id: 14,
         title: 'Ойыншықтар',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 60,
@@ -480,9 +524,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage6,
             screenShots: []
@@ -498,7 +543,7 @@ export const mocksProjects = [
         id: 15,
         title: 'Суперкөлік Самұрық',
         categories: ['Телехикая','Мультсериал'],
-        type: 'Series',
+        type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 7,
@@ -510,26 +555,40 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 3,
+            seasonCount: 3,
             episodes: [
-                { seasons: 1, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 3, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 4, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 5, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 6, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 7, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 8, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 9, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 1, episode: 10, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 1, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 2, episode: 2, videoId: 'vPQy7H-i3ww&t'},
-                { seasons: 3, episode: 1, videoId: 'vPQy7H-i3ww&t'}
+                { id: 1244, season: 1, episode: 1, videoId: 'vPQy7H-i3ww&t00000'},
+                { id: 1344, season: 1, episode: 2, videoId: 'vPQy7H-i3ww&t10'},
+                { id: 1444, season: 1, episode: 3, videoId: 'vPQy7H-i3ww&t11'},
+                { id: 1544, season: 1, episode: 4, videoId: 'vPQy7H-i3ww&t12'},
+                { id: 1644, season: 1, episode: 5, videoId: 'vPQy7H-i3ww&t13'},
+                { id: 1744, season: 1, episode: 6, videoId: 'vPQy7H-i3ww&t14'},
+                { id: 1844, season: 1, episode: 7, videoId: 'vPQy7H-i3ww&t15'},
+                { id: 1944, season: 1, episode: 8, videoId: 'vPQy7H-i3ww&t16'},
+                { id: 2044, season: 1, episode: 9, videoId: 'vPQy7H-i3ww&t17'},
+                { id: 2144, season: 1, episode: 10, videoId: 'vPQy7H-i3ww&t18'},
+                { id: 2244, season: 1, episode: 11, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 2344, season: 1, episode: 12, videoId: 'vPQy7H-i3ww&t1820'},
+                { id: 2444, season: 1, episode: 13, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 2544, season: 1, episode: 14, videoId: 'vPQy7H-i3ww&t185'},
+                { id: 2644, season: 2, episode: 1, videoId: 'vPQy7H-i3ww&t19'},
+                { id: 2744, season: 2, episode: 2, videoId: 'vPQy7H-i3ww&t20'},
+                { id: 2844, season: 3, episode: 1, videoId: 'vPQy7H-i3ww&t21'}
             ]
         },
         media: {
             coverImage: screen2,
-            screenShots: [ screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2, screen2 ]
+            screenShots: [ 
+                {image: screen2, id: 1},
+                {image: screen2, id: 2},
+                {image: screen2, id: 3},
+                {image: screen2, id: 4},
+                {image: screen2, id: 5},
+                {image: screen2, id: 6},
+                {image: screen2, id: 7},
+                {image: screen2, id: 8},
+                {image: screen2, id: 9},
+             ]
         },
         stats: {
             views: 10329,
@@ -542,7 +601,7 @@ export const mocksProjects = [
         id: 16,
         title: 'Каникулы off-line 2',
         categories: ['Телехикая'],
-        type: 'Movie',
+        type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
         year: 2020,
         duration: 180,
@@ -554,9 +613,10 @@ export const mocksProjects = [
         updatedAt: '2021-04-04T21:30:00Z',
         createdBy: 'Admin',
         video: {
-            seasons: 0,
-            episodes: []
-        },
+            videoId: 'vPQy7H-i3ww&t',
+            seasonCount: 0,
+            episodes: [],
+          },
         media: {
             coverImage: coverImage8,
             screenShots: []

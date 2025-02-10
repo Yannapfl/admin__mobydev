@@ -1,0 +1,227 @@
+.project-edit-header {
+    display: flex;
+    margin-bottom: 32px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.project-edit-header button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(143, 146, 161, 0.1);
+}
+
+.sections-projects-edit {
+    margin-bottom: 13px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 40px;
+}
+
+.switcher-section-edit {
+    line-height: 24px;
+    font-weight: 700;
+    color: #8F92A1;
+}
+
+.switcher-section-edit.active {
+    color: #0052CC;
+}
+
+
+.project-info-line {
+    position: relative;
+    margin: 0 -32px 32px -32px;
+}
+
+.wrapper-active-line {
+    margin: auto;
+}
+
+.active-line {
+    position: absolute; 
+    height: 2px;
+    background-color: blue; 
+    border-radius: 16px 16px 0 0;
+    transition: all 0.3s ease;
+}
+
+.input-main-info {
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.input-main-info.filled {
+    font-weight: 700;
+    color: #171717;
+    border: 1px solid rgba(23, 23, 23, 0.6);
+    background-color: #ffffff;
+}
+
+.input-wrapper-main-info {
+    position: relative;
+}
+
+.input-label-projects {
+    position: absolute;
+    top: -1rem;
+    left: 10px;
+    font-size: 12px;
+    color: #8F92A1;
+    font-weight: 500;
+    line-height: 14px;
+    background-color: #ffffff;
+    padding: 10px 10px 0 10px;
+    margin: 0 auto;
+}
+
+.input-double-flex-main-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.input-double-flex-main-info input {
+    width: 370px;
+}
+
+.main-info-keywords-input {
+    position: relative;
+}
+
+.empty-keywords-prompt {
+    margin: -24px auto 16px 24px;
+    font-size: 12px;
+    color: #8F92A1;
+    font-weight: 400;
+    line-height: 20px
+}
+
+.textarea-main-info-description {
+    min-height: 150px;
+    width: 100%;
+    margin-bottom: 32px;
+    padding: 24px 36px;
+    resize: none;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+}
+
+.textarea-main-info-description.filled {
+    min-height: 256px;
+    max-height: 100%;
+    border: 1px solid rgba(23, 23, 23, 0.6);
+    background-color: #ffffff;
+}
+
+.project-edit-btn-group button {
+    width: 134px;
+    height: 38px;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.project-edit-btn-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.wrapper-video-input .input-wrapper-main-info {
+    width: 190px;
+}
+
+.wrapper-video-input input {
+    margin-bottom: 0;
+}
+
+.wrapper-movie-video {
+    margin: 32px 0;
+}
+
+.wrapper-movie-video .input-wrapper-main-info {
+    margin-bottom: 16px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.coverage-block.filled {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.cover-img-preview {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cover-img-preview-contaiiner {
+    position: relative;
+    margin-bottom: 16px;
+    height: 220px;
+    width: 150px;
+    overflow: hidden;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 10%) ;
+}
+
+.screen-img-preview-contaiiner {
+    position: relative;
+    height: 79px;
+    width: 140px;
+    overflow: hidden;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-img-preview-contaiiner img,
+.screen-img-preview-contaiiner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-image-remove-img-button {
+    position: absolute;
+    padding: 8px;
+    top: 4px;
+    right: 4px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+}
+
+.grid-block-screenshots-upload {
+    margin: -16px 8px 32px 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 140px);
+    gap: 8px;
+}
+
+.btn-skip.disable {
+    opacity: 24%;
+}
+
+.g-350 {
+    gap: 350px;
+}

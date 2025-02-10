@@ -205,6 +205,7 @@
 
 .project-info-line .active-line {
     position: absolute;
+    margin-left: 32px;
     bottom: -2px; 
     height: 2px;
     background-color: blue; 

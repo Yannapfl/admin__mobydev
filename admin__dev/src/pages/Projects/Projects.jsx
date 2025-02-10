@@ -3,15 +3,23 @@ import plus from "../../assets/icons/math-plus.svg";
 import DropdownFilter from "../../components/DropdownFilter/DropdownFilter";
 import clock from "../../assets/icons/clock.svg";
 import CardProjects from "../../components/CardProjects/CardProjects";
-import { mocksProjects } from "../../mocks/mocksProjects";
 import { useContext } from "react";
-import ProjectsContext from "../../contexts/ProjectsContext";
+import { useNavigate } from "react-router-dom";
+import DataContext from "../../contexts/DataContext";
 
 const mocksSortFilter = ["Популярные", "Новинки", "По рейтингу", "Все"];
 const mocksTypeFilter = ['Фильмы и сериалы', 'Фильмы', 'Сериалы'];
 
 export default function Projects() {
-  const { projects } = useContext(ProjectsContext);
+  const { data } = useContext(DataContext);
+  const navigate = useNavigate();
+  const projects = data.projects;
+
+  const handleAddProject = (e) => {
+    e.preventDefault();
+    navigate('/projects/add');
+  }
+
   const handleFilterChange = (filterName) => {
     console.log(`Выбран фильтр: ${filterName}`);
   };
@@ -21,9 +29,9 @@ export default function Projects() {
       <div className="page-header">
         <div className="page-headline">
           <h1>Проекты</h1>
-          <p>{mocksProjects.length}</p>
+          <p>{projects.length}</p>
         </div>
-        <button className="btn btn-headline" onClick={() => alert("Add")}>
+        <button className="btn btn-headline" onClick={handleAddProject}>
           <div className="btn-items-headline">
             <img src={plus} alt="plus" />
             <p>Добавить</p>

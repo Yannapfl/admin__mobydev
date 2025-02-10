@@ -1,0 +1,45 @@
+.season-render h1 {
+    margin: 16px 0;
+}
+
+.season-render .btn-text-blue {
+    margin: 0 0 16px 0;
+}
+
+.video-episode-block {
+    margin-bottom: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.video-input-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+.video-input-flex input {
+    width: 708px;
+    margin-bottom: 0;
+}
+
+.wrapper-preview-video-episode {
+    width: 160px;
+    height: 90px;
+    padding: auto;
+    position: relative;
+    background-color: rgba(143, 146, 161, 0.5);
+}
+
+.wrapper-preview-video-episode .btn-play {
+    width: 36px;
+    height: 25px;
+    right: 40%;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 1px;
+}

@@ -1,13 +1,15 @@
 import { createContext, useState } from "react";
 import { mocksGenres } from "../mocks/mocksGenres";
-import { mocksAges } from "../mocks/mocksAges";
 import PropTypes from "prop-types";
 import { mocksCategories } from "../mocks/mocksCategories";
+import mocksAges from "../mocks/mocksAges";
+import { mocksProjects } from "../mocks/mocksProjects";
 
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
     const [data, setData ] = useState({
+        projects: mocksProjects,
         genres: mocksGenres,
         ages: mocksAges,
         categories: mocksCategories,

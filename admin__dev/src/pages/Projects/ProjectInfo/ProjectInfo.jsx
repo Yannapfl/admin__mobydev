@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./ProjectInfo.css";
-import { mocksProjects } from "../../../mocks/mocksProjects";
 import clock from "../../../assets/icons/black_clock.svg";
 import television from "../../../assets/icons/info_categories.svg";
 import clapperBoard from "../../../assets/icons/clapper-board.svg";
@@ -12,23 +11,24 @@ import star from "../../../assets/icons/star.svg";
 import share from "../../../assets/icons/share.svg";
 import wastebasket from "../../../assets/icons/wastebasket_white.svg";
 import { useContext, useState } from "react";
-import ProjectsContext from "../../../contexts/ProjectsContext";
 import { useDeleteModal } from "../../../components/Modals/ModalDelete/useDeleteModal";
 import { ModalDelete } from "../../../components/Modals/ModalDelete/ModalDelete";
+import VideoPlayer from "../../../components/VideoPlayer/VideoPlayer";
+import DataContext from "../../../contexts/DataContext";
 
 export default function ProjectInfo() {
   const { projectId } = useParams();
   const navigate = useNavigate();
-  const { removeProject } = useContext(ProjectsContext);
+  const { data, deleteEntity } = useContext(DataContext);
   const { isOpen, openModal, closeModal, target } = useDeleteModal();
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedEpisode, setSelectedEpisode] = useState(1);
 
-  const project = mocksProjects.find((proj) => proj.id === parseInt(projectId));
+  const project = data.projects.find((proj) => proj.id === parseInt(projectId));
   const maxCountEpisodesInLine = 10;
 
-  const seasonsText = `${project.video.seasons} ${getPluralForm(
-    project.video.seasons,
+  const seasonsText = `${project.video.seasonCount} ${getPluralForm(
+    project.video.seasonCount,
     "сезон",
     "сезона",
     "сезонов"
@@ -51,7 +51,7 @@ export default function ProjectInfo() {
   }
 
   const handleDelete = () => {
-    removeProject(project.id);
+    deleteEntity('projects', project.id);
     navigate("/projects");
     closeModal();
   }
@@ -91,7 +91,7 @@ export default function ProjectInfo() {
               </div>
             </div>
             <div className="project-info-btn-group">
-              <button className="btn-grey">Редактировать</button>
+              <button className="btn-grey" onClick={() => navigate(`/projects/edit/${projectId}`)}>Редактировать</button>
               <button 
                 className="btn-red"
                 onClick={() => openModal(project)}
@@ -104,26 +104,23 @@ export default function ProjectInfo() {
           {/* video and switchers */}
           {(() => {
             switch (project.type) {
-              case "Movie":
+              case "Фильм":
                 return (
                   <div className="project-video-block">
-                    <p>{project.video.episodes.videoId || "Видео не найдено"}</p>
-                    <button className="btn-play">🞂</button>
+                    <VideoPlayer videoId={project.video.videoId} />
                   </div>
                 );
-              case "Series":
+              case "Сериал":
                 return (
                   <div className="switcher-block">
                     <div className="project-video-block">
-                    <p>
-                      {project.video.episodes.find(
-                        (ep) => ep.seasons === selectedSeason && ep.episode === selectedEpisode
-                          )?.videoId || "Эпизод не найден"}
-                     </p>
-                      <button className="btn-play">⯈</button>
+                      {<VideoPlayer videoId={project.video.episodes.find(
+                        (ep) => ep.season === selectedSeason && ep.episode === selectedEpisode
+                          )?.videoId} />
+                        }
                     </div>
                     <div className="switcher-seasons">
-                      {Array.from({ length: project.video.seasons }).map((_, index) => (
+                      {Array.from({ length: project.video.seasonCount }).map((_, index) => (
                         <button
                           key={index}
                           className={`btn-season${selectedSeason === index + 1 ? " active" : ""}`}
@@ -135,7 +132,7 @@ export default function ProjectInfo() {
                     </div>
                     <div className="switcher-episodes">
                       {project.video.episodes
-                      .filter((ep) => ep.seasons === selectedSeason)
+                      .filter((ep) => ep.season === selectedSeason)
                       .map((ep, index) => (
                         <button
                           key={index}
@@ -187,12 +184,12 @@ export default function ProjectInfo() {
           <div className="project-info-screenshots">
             <h1>Скриншоты</h1>
             <div className="project-info-screenshots-group">
-              {project.media.screenShots.map((screenshot, index) => (
-                <div key={index} className="img-container">
+              {project.media.screenShots.map((screenshotObj) => (
+                <div key={screenshotObj.id} className="img-container">
                 <img
-                key={index}
+                key={screenshotObj.id}
                 className="project-info-screenshot"
-                src={screenshot}
+                src={screenshotObj.image}
                 alt="screenshot"
               />
               </div>
@@ -222,7 +219,7 @@ export default function ProjectInfo() {
           </div>
           <div className="img-data-project">
             <img src={clapperBoard} alt="clapper board" />
-            {project.type === "Series" ? (
+            {project.type === "Сериал" ? (
               <h4>
                 {seasonsText}, {episodesText}, {project.duration} мин
               </h4>

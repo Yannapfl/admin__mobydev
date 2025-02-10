@@ -10,6 +10,12 @@ export default function Ages() {
   const { data, addEntity, updateEntity, deleteEntity } = useContext(DataContext);
   const { modalType, modalProps, openModal, closeModal } = useModalManager();
 
+
+  const cardsAges = data.ages.map(item => ({
+    ...item,
+    label: `${item.label} жас`
+}));
+
       return (
         <div className="ages">
           <div className="page-header">
@@ -25,7 +31,7 @@ export default function Ages() {
             </button>
           </div>
           <div className="cards-group">
-            {data.ages.map((age) => (
+            {cardsAges.map((age) => (
               <ContentCard
                 card={age}
                 key={age.id}

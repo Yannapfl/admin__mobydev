@@ -225,3 +225,7 @@
 .g-350 {
     gap: 350px;
 }
+
+.right-btn-group .btn-grey {
+    margin-left: 8px;
+}

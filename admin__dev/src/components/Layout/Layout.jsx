@@ -2,9 +2,8 @@ import "./Layout.css";
 import Header from "./Header/Header";
 import { Outlet, useLocation } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
-import { CategoriesProvider } from "../../pages/Categories/CategoriesContext";
-import { ProjectsProvider } from "../../contexts/ProjectsContext";
 import { DataProvider } from "../../contexts/DataContext";
+import { FeaturedProjectsProvider } from "../../contexts/FeaturedProjectsContext";
 
 export default function Layout() {
   const location = useLocation();
@@ -27,11 +26,9 @@ export default function Layout() {
         <Navigation />
         <main className={mainClassName}>
           <DataProvider>
-            <CategoriesProvider>
-              <ProjectsProvider>
+              <FeaturedProjectsProvider>
                 <Outlet />
-              </ProjectsProvider>
-            </CategoriesProvider>
+              </FeaturedProjectsProvider>
           </DataProvider>
         </main>
       </div>

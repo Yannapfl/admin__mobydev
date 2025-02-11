@@ -165,7 +165,7 @@ export const mocksProjects = [
     },
     {
         id: 5,
-        title: 'Айдар',
+        title: 'Айдар 1',
         categories: ['Телехикая','Мультфильм'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
@@ -200,7 +200,7 @@ export const mocksProjects = [
     },
     {
         id: 6,
-        title: 'Ойыншықтар',
+        title: 'Ойыншықтар 1',
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
@@ -231,7 +231,7 @@ export const mocksProjects = [
     },
     {
         id: 7,
-        title: 'Суперкөлік Самұрық',
+        title: 'Суперкөлік Самұрық 1',
         categories: ['Телехикая','Мультсериал'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
@@ -289,7 +289,7 @@ export const mocksProjects = [
     },
     {
         id: 8,
-        title: 'Каникулы off-line 2',
+        title: 'Каникулы off-line 3',
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
@@ -320,7 +320,7 @@ export const mocksProjects = [
     },
     {
         id: 9,
-        title: 'Айдар',
+        title: 'Айдар 2',
         categories: ['Телехикая','Мультфильм'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
@@ -355,7 +355,7 @@ export const mocksProjects = [
     },
     {
         id: 10,
-        title: 'Ойыншықтар',
+        title: 'Ойыншықтар 2',
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
@@ -386,7 +386,7 @@ export const mocksProjects = [
     },
     {
         id: 11,
-        title: 'Суперкөлік Самұрық',
+        title: 'Суперкөлік Самұрық 2',
         categories: ['Телехикая','Мультсериал'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
@@ -444,7 +444,7 @@ export const mocksProjects = [
     },
     {
         id: 12,
-        title: 'Каникулы off-line 2',
+        title: 'Каникулы off-line 4',
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
@@ -475,7 +475,7 @@ export const mocksProjects = [
     },
     {
         id: 13,
-        title: 'Айдар',
+        title: 'Айдар 3',
         categories: ['Телехикая','Мультфильм'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
@@ -510,7 +510,7 @@ export const mocksProjects = [
     },
     {
         id: 14,
-        title: 'Ойыншықтар',
+        title: 'Ойыншықтар 3',
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
@@ -541,7 +541,7 @@ export const mocksProjects = [
     },
     {
         id: 15,
-        title: 'Суперкөлік Самұрық',
+        title: 'Суперкөлік Самұрық 3',
         categories: ['Телехикая','Мультсериал'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
@@ -599,7 +599,7 @@ export const mocksProjects = [
     },
     {
         id: 16,
-        title: 'Каникулы off-line 2',
+        title: 'Каникулы off-line 5',
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],

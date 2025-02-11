@@ -11,16 +11,16 @@ import star from "../../../assets/icons/star.svg";
 import share from "../../../assets/icons/share.svg";
 import wastebasket from "../../../assets/icons/wastebasket_white.svg";
 import { useContext, useState } from "react";
-import { useDeleteModal } from "../../../components/Modals/ModalDelete/useDeleteModal";
-import { ModalDelete } from "../../../components/Modals/ModalDelete/ModalDelete";
 import VideoPlayer from "../../../components/VideoPlayer/VideoPlayer";
 import DataContext from "../../../contexts/DataContext";
+import { useModalManager } from "../../../components/Modals/useModalManager";
+import { ModalFactory } from "../../../components/Modals/ModalFactory";
 
 export default function ProjectInfo() {
   const { projectId } = useParams();
   const navigate = useNavigate();
   const { data, deleteEntity } = useContext(DataContext);
-  const { isOpen, openModal, closeModal, target } = useDeleteModal();
+  const { modalType, modalProps, openModal, closeModal } = useModalManager();
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedEpisode, setSelectedEpisode] = useState(1);
 
@@ -48,12 +48,6 @@ export default function ProjectInfo() {
 
   const handleEpisodeChange = (episode) => {
     setSelectedEpisode(episode);
-  }
-
-  const handleDelete = () => {
-    deleteEntity('projects', project.id);
-    navigate("/projects");
-    closeModal();
   }
 
   return (
@@ -94,7 +88,11 @@ export default function ProjectInfo() {
               <button className="btn-grey" onClick={() => navigate(`/projects/edit/${projectId}`)}>Редактировать</button>
               <button 
                 className="btn-red"
-                onClick={() => openModal(project)}
+                onClick={() => openModal('delete', { label: 'проект', onConfirm: () => {
+                  deleteEntity('projects', project.id);
+                  closeModal();
+                  navigate('/projects');
+                } })}
               >
                 <img src={wastebasket} alt="wastebasket" />
               </button>
@@ -246,11 +244,18 @@ export default function ProjectInfo() {
           </div>
         </div>
       </div>
-    {isOpen && target && (
-      <ModalDelete
-          label='проект'
-          onConfirm={handleDelete}
-          closeModal={closeModal}
+    {modalType && (
+      <ModalFactory
+      type={modalType}
+      modalProps={{
+        ...modalProps,
+        label: 'проект',
+        onDelete: () => {
+          deleteEntity('projects', modalProps.entity?.id);
+          closeModal();
+        },
+        closeModal,
+      }}
         />
     )}
 

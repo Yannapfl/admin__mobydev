@@ -54,3 +54,18 @@
     color: #8F92A1;
   }
   
+  .modal-header-success {
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .modal-content-success {
+    margin: 32px 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 16px;
+  }

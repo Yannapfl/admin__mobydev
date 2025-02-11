@@ -15,31 +15,20 @@ export default function VideoSection({
 }) {
   const [selectedCountSeasons, setSelectedCountSeasons] = useState(tempProject.video?.seasonCount || 0);
   const [selectedCountEpisodes, setSelectedCountEpisodes] = useState(tempProject.video?.episodes || []);
-  const [movieVideoId, setMovieVideoId] = useState('');
-
-  const checkIfFilled = useCallback(() => {
-    if (selectedType === 'Фильм') {
-      setIsFilledSection(checkFilled(movieVideoId));
-    } else if (selectedType === 'Сериал') {
-      const areAllEpisodesFilled = selectedCountEpisodes.every(episode => checkFilled(episode.videoId));
-      setIsFilledSection(areAllEpisodesFilled);
-    }
-  }, [movieVideoId, selectedType, selectedCountEpisodes, setIsFilledSection]);
+  const [movieVideoId, setMovieVideoId] = useState(tempProject.video?.videoId || "");
 
   useEffect(() => {
-    if (selectedType === 'Фильм') {
-      setMovieVideoId(tempProject.video?.videoId || "");
+    if (selectedType === "Фильм") {
       setSelectedCountSeasons(0);
       setSelectedCountEpisodes([]);
-    } else if (selectedType === 'Сериал') {
-      setMovieVideoId("");
+      setIsFilledSection(checkFilled(movieVideoId));
+    } else if (selectedType === "Сериал") {
       setSelectedCountSeasons(tempProject.video?.seasonCount || 1);
       setSelectedCountEpisodes(tempProject.video?.episodes || [{ season: 1, episode: 1, videoId: '', id: Date.now() }]);
+      const areAllEpisodesFilled = (tempProject.video?.episodes || []).every(episode => checkFilled(episode.videoId));
+      setIsFilledSection(areAllEpisodesFilled);
     }
-    checkIfFilled();
-  }, [selectedType, tempProject.video, checkIfFilled]);
-
-  const arraySeasonsCount = createArrayTo(selectedCountSeasons);
+  }, [selectedType, movieVideoId, tempProject.video, setIsFilledSection]);
 
   const handleChangeVideoId = (value) => {
     setMovieVideoId(value);
@@ -65,8 +54,8 @@ export default function VideoSection({
 
   const handleEpisodesChange = useCallback((seasonNumber, newEpisodes) => {
     setSelectedCountEpisodes((prevEpisodes) => {
-      const otherEpisodes = prevEpisodes.filter(episode => episode.season !== seasonNumber);
-      const updatedEpisodes = [...otherEpisodes, ...newEpisodes];
+      const updatedEpisodes = prevEpisodes.filter(episode => episode.season !== seasonNumber)
+        .concat(newEpisodes);
 
       setTempProject((prev) => ({
         ...prev,
@@ -78,6 +67,8 @@ export default function VideoSection({
       return updatedEpisodes;
     });
   }, [setTempProject]);
+
+  const arraySeasonsCount = createArrayTo(selectedCountSeasons);
 
   return (
     <div className="video-section-block">

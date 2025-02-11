@@ -39,7 +39,7 @@ export default function ContentCard({ card, onEdit, onDelete }) {
 ContentCard.propTypes = {
   card: PropTypes.shape({
     label: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
 }).isRequired,
     onEdit: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,

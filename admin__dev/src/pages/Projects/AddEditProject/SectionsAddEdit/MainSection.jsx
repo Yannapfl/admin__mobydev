@@ -4,6 +4,7 @@ import NumericStepperInput from "../../../../components/NumericStepperInput/Nume
 import DataContext from "../../../../contexts/DataContext";
 import PropTypes from "prop-types";
 import { checkFilled } from "../../../../utils/checkFilled";
+import DropdownList from "../../../../components/DropdownList/DropdownList";
 
 export default function MainSection({
   tempProject,
@@ -12,7 +13,6 @@ export default function MainSection({
   setType,
 }) {
   const { data } = useContext(DataContext);
-  const [isOpen, setIsOpen] = useState(false);
   const typesProjects = ["Фильм", "Сериал"];
   const [titleInput, setTitleInput] = useState(tempProject?.title || "");
   const categories = data.categories.map((category) => category.label);
@@ -44,7 +44,6 @@ export default function MainSection({
     tempProject?.producer || ""
   );
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
 
   const allValues = useMemo(
     () => [
@@ -152,43 +151,12 @@ export default function MainSection({
         </div>
         <div className="input-double-flex-main-info">
           <div className="multi-select-dropdown">
-            <input
-              type="text"
-              value={selectedType}
-              placeholder="Тип проекта"
-              className={`input-main-info ${
-                selectedType.length === 0 ? "" : "filled"
-              }`}
-              readOnly
-            />
-            <button
-              type="button"
-              className="btn-img btn-arrow-multidropdown"
-              onClick={toggleDropdown}
-            >
-              {isOpen ? "⏶" : "⏷"}
-            </button>
-            {isOpen && (
-              <ul className="multidropdown-list m-0">
-                {typesProjects.map((type) => (
-                  <li
-                    key={type}
-                    className={`multidropdow-list-item ${
-                      selectedType.includes(type) ? "active" : ""
-                    }`}
-                    onClick={() => {
-                      setSelectedType(type);
-                      setIsOpen(false);
-                    }}
-                  >
-                    {type}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {selectedType.length !== 0 && (
-              <p className="input-label-projects">Тип проекта</p>
-            )}
+            <DropdownList
+             options={typesProjects}
+             selectedValue={selectedType}
+             setSelectedValue={setSelectedType}
+             placeholder="Тип проекта"
+             />
           </div>
 
           <MultiSelectDropdown

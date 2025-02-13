@@ -1,0 +1,23 @@
+.user-modal .modal-content {
+    width: 574px;
+    height: 445px;
+}
+
+.user-modal-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.user-modal-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.user-modal-text-block h4 {
+    color: #8F92A1;
+}

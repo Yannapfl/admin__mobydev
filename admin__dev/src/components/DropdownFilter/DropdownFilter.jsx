@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./DropdownFilter.css";
-import arrow from '../../assets/icons/arrow-downlist.svg'
+import arrow from "../../assets/icons/arrow-downlist.svg";
 
 export default function DropdownFilter({
   label,
@@ -21,7 +21,7 @@ export default function DropdownFilter({
       <span className="dropdown-label">{label}</span>
       <div className="dropdown" onClick={() => setIsOpen(!isOpen)}>
         <span className="dropdown-selected">{selectedOption}</span>
-        <img src={arrow} alt='arrow-down' />
+        {typeof label === "string" && <img src={arrow} alt="arrow-down" />}
         {isOpen && (
           <ul className="dropdown-options">
             {options.map((option, index) => (
@@ -41,7 +41,7 @@ export default function DropdownFilter({
 }
 
 DropdownFilter.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSelect: PropTypes.func.isRequired,
   selectedOption: PropTypes.string.isRequired,

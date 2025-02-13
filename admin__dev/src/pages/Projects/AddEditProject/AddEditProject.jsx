@@ -11,6 +11,7 @@ import MediaSection from "./SectionsAddEdit/MediaSection";
 import { emptyProjectStructure } from "../../../mocks/mocksProjectStructure";
 import { useModalManager } from "../../../components/Modals/useModalManager";
 import { ModalFactory } from "../../../components/Modals/ModalFactory";
+import { useSelector } from "react-redux";
 
 export default function AddEditProject({ mode }) {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export default function AddEditProject({ mode }) {
   const [isFilledSection, setIsFilledSection] = useState(false);
   const { data, addEntity, updateEntity } = useContext(DataContext);
   const { modalType, openModal, closeModal } = useModalManager();
+  const user = useSelector((state) => state.auth.user);
 
   const project = mode === 'edit' ? data.projects.find((proj) => proj.id === parseInt(projectId)) 
   : { ...emptyProjectStructure,
@@ -80,6 +82,7 @@ export default function AddEditProject({ mode }) {
             updatedAt: Date.now(),
             createdAt: Date.now(),
             id: Date.now(),
+            createdBy: user.name,
           };
           setTempProject(newProject);
           addEntity('projects', newProject);
@@ -174,7 +177,6 @@ export default function AddEditProject({ mode }) {
          
           {mode === 'add' ? (
   <>
-    {/* Первая секция */}
     {activeSection === sections[0] && (
       <div className="project-edit-btn-group">
         <button 
@@ -189,7 +191,6 @@ export default function AddEditProject({ mode }) {
       </div>
     )}
 
-    {/* Не первая и не последняя секция */}
     {activeSection !== sections[0] && activeSection !== sections[sections.length - 1] && (
       <div className="project-edit-btn-group g-350">
         <button className="btn btn-grey" onClick={handleReturn}>Назад</button>
@@ -207,7 +208,6 @@ export default function AddEditProject({ mode }) {
       </div>
     )}
 
-    {/* Последняя секция */}
     {activeSection === sections[sections.length - 1] && (
       <div className="project-edit-btn-group g-350">
         <button className="btn btn-grey" onClick={handleReturn}>Назад</button>

@@ -4,6 +4,8 @@ import { ModalDelete } from "./ModalDelete/ModalDelete";
 import SuccessModal from "./SuccessModal/SuccessModal";
 import { TextEditModal } from "./TextEditModal/TextEditModal";
 import PropTypes from "prop-types";
+import UserModal from "./UserModal/UserModal";
+import { RoleModal } from "./RoleModal/RoleModal";
 
 export function ModalFactory({ type, modalProps }) {
     switch (type) {
@@ -17,6 +19,10 @@ export function ModalFactory({ type, modalProps }) {
             return <ModalDelete {...modalProps} />
         case 'success':
             return <SuccessModal {...modalProps}/>
+        case 'userCard':
+            return <UserModal {...modalProps} />
+        case 'roleModal':
+            return <RoleModal {...modalProps} />    
         default:
             return null;
     }

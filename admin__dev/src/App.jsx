@@ -6,7 +6,7 @@ import Projects from "./pages/Projects/Projects.jsx";
 import Layout from "./components/Layout/Layout";
 import HomeProjects from "./pages/HomeProjects/HomeProjects.jsx";
 import Categories from "./pages/Categories/Categories";
-import Users from "./pages/Users/Useres";
+import Users from "./pages/Users/Users";
 import Roles from "./pages/Roles/Roles";
 import Genres from "./pages/Genres/Genres";
 import Ages from "./pages/Ages/Ages";

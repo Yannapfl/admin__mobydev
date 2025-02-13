@@ -1,0 +1,43 @@
+.roles-cards-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 538px);
+    gap: 18px;
+}
+
+.card-title-role {
+    margin-bottom: 12px;
+}
+
+.content-card-role {
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.content-card-role:hover {
+    color: #0052CC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.role-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.list-block {
+    padding-left: 10px;
+}
+
+.list-block li {
+    list-style-image: url(../../assets/icons/check.svg);
+    list-style-position: outside;
+    margin:  0;
+}
+
+.list-block li span {
+    padding-left: 5px;
+    font-size: 12px;
+    font-weight: 400;
+}

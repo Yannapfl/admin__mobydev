@@ -13,7 +13,7 @@ export default function DropdownList({ options, selectedValue, setSelectedValue,
         type="text"
         value={selectedValue}
         placeholder={placeholder}
-        className={`input-main-info ${selectedValue.length === 0 ? "" : "filled"}`}
+        className={`input-main-info ${selectedValue ? "filled" : ""}`}
         readOnly
       />
       <button
@@ -27,7 +27,7 @@ export default function DropdownList({ options, selectedValue, setSelectedValue,
         <ul className="dropdown-list m-0">
           {options.map((option) => (
             <li
-              key={option}
+              key={String(option)}
               className={`dropdow-list-item ${
                 selectedValue === option ? "active" : ""
               }`}
@@ -47,8 +47,9 @@ export default function DropdownList({ options, selectedValue, setSelectedValue,
 }
 
 DropdownList.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedValue: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.any),
+  selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   setSelectedValue: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
 };
+

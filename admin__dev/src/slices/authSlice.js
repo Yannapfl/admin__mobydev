@@ -1,18 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-const mockUsers = [
-    { email: 'test@example.com', password: 'password123' },
-    { email: 'user@example.com', password: 'mypassword' },
-]
+import { mocksAdmins } from '../mocks/mocksAdmins';
+import { mocksRoles } from '../mocks/mocksRoles';
 
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
     async ({ email, password }, { rejectWithValue }) => {
-        const user = mockUsers.find(
+        const user = mocksAdmins.find(
             (u) => u.email === email && u.password === password
         )
         if (user) {
-            return{ email: user.email }
+            const role = mocksRoles.find((r) => r.id === user.roleId)
+            return{ email: user.email, role: role || null, name: user.name}
         } else {
             return rejectWithValue('Неправильный email или пароль')
         }
@@ -43,7 +41,7 @@ const authSlice = createSlice({
             })
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.user = action.payload.user;
+                state.user = action.payload;
                 state.token = action.payload.token;
                 state.isAuthenticated = true;
             })

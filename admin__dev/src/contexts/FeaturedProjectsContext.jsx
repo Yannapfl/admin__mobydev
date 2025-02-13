@@ -1,11 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { mocksFeaturedProjects } from "../mocks/mocksFeaturedProjects";
+import DataContext from "./DataContext";
 
 const FeaturedProjectsContext = createContext();
 
 export const FeaturedProjectsProvider = ({ children }) => {
-  const [featuredProjects, setFeaturedProjects] = useState(mocksFeaturedProjects);
+  const [featuredProjects, setFeaturedProjects] = useState(
+    mocksFeaturedProjects
+  );
+  const { data } = useContext(DataContext);
 
   const addFeaturedProject = (newEntity) => {
     setFeaturedProjects((prev) => {
@@ -14,20 +18,24 @@ export const FeaturedProjectsProvider = ({ children }) => {
           ? { ...project, order: project.order + 1 }
           : project
       );
-  
+
       return [...updatedProjects, newEntity].sort((a, b) => a.order - b.order);
     });
   };
 
   const updateFeaturedProjects = (updatedEntity) => {
+    if (!updatedEntity?.id) return;
+  
     setFeaturedProjects((prev) => {
-      const currentProject = prev.find((project) => project.projectId === updatedEntity.projectId);
+      const currentProject = data.projects.find((project) => project.id === updatedEntity.projectId);
       if (!currentProject) return prev;
   
       const updatedOrder = updatedEntity.order;
       const currentOrder = currentProject.order;
   
-      let updatedProjects = prev.filter((project) => project.projectId !== updatedEntity.projectId);
+      let updatedProjects = prev.map((project) =>
+        project.id === updatedEntity.id ? { ...project, ...updatedEntity } : project
+      );
   
       if (updatedOrder !== currentOrder) {
         updatedProjects = updatedProjects.map((project) => {
@@ -43,13 +51,18 @@ export const FeaturedProjectsProvider = ({ children }) => {
         });
       }
   
-      return [...updatedProjects, updatedEntity].sort((a, b) => a.order - b.order);
+      return updatedProjects.sort((a, b) => a.order - b.order);
     });
   };
-  
 
   const removeFeaturedProject = (projectId) => {
-    setFeaturedProjects((prev) => prev.filter((featuredProject) => featuredProject.projectId !== projectId));
+    setFeaturedProjects((prev) => {
+      const updatedProjects = prev
+        .filter((project) => project.projectId !== projectId)
+        .map((project, index) => ({ ...project, order: index + 1 }));
+
+      return updatedProjects;
+    });
   };
 
   return (

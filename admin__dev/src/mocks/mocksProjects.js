@@ -138,7 +138,7 @@ export const mocksProjects = [
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2018,
         duration: 60,
         keywords: ['Тачка', 'Мульт'],
         description: '',
@@ -157,9 +157,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 19659,
+            favorites: 14,
+            shares: 4301,
 
         }
     },
@@ -169,7 +169,7 @@ export const mocksProjects = [
         categories: ['Телехикая','Мультфильм'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2014,
         duration: 7,
         keywords: ['Тачка', 'Авто', 'Мульт'],
         description: '',
@@ -192,9 +192,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 15201,
-            favorites: 4,
-            shares: 43,
+            views: 25201,
+            favorites: 41,
+            shares: 143,
 
         }
     },
@@ -204,7 +204,7 @@ export const mocksProjects = [
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2024,
         duration: 60,
         keywords: ['Тачка', 'Мульт'],
         description: '',
@@ -223,9 +223,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 19659,
+            favorites: 43,
+            shares: 433,
 
         }
     },
@@ -235,7 +235,7 @@ export const mocksProjects = [
         categories: ['Телехикая','Мультсериал'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2022,
         duration: 7,
         keywords: ['Тачка', 'Авто', 'Мульт'],
         description: 'Шытырман оқиғалы мультсериал Елбасының «Ұлы даланың жеті қыры» бағдарламасы аясында жүзеге асырылған. Мақалада қызғалдақтардың отаны Қазақстан екені айтылады. Ал, жоба қызғалдақтардың отаны – Алатау баурайы екенін анимация тілінде дәлелдей түседі. If you want to increase your knowledge of 3D design with Aarón, you can also take some of his other courses: Characters in Cinema 4D: from the Sketch to 3D Printing, Prototypes and Product Viewing in Cinema 4D, Compositions with Cinema 4D and OctaneRender, 3D Illustration with 4D Cinema 4D.',
@@ -281,7 +281,7 @@ export const mocksProjects = [
             ]
         },
         stats: {
-            views: 10329,
+            views: 20329,
             favorites: 4,
             shares: 43,
 
@@ -312,9 +312,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 99659,
+            favorites: 455,
+            shares: 4330,
 
         }
     },
@@ -324,7 +324,7 @@ export const mocksProjects = [
         categories: ['Телехикая','Мультфильм'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2010,
         duration: 7,
         keywords: ['Тачка', 'Авто', 'Мульт'],
         description: '',
@@ -347,9 +347,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 15201,
-            favorites: 4,
-            shares: 43,
+            views: 18201,
+            favorites: 3,
+            shares: 77,
 
         }
     },
@@ -359,7 +359,7 @@ export const mocksProjects = [
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2015,
         duration: 60,
         keywords: ['Тачка', 'Мульт'],
         description: '',
@@ -378,9 +378,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 2124,
+            favorites: 6,
+            shares: 437,
 
         }
     },
@@ -390,7 +390,7 @@ export const mocksProjects = [
         categories: ['Телехикая','Мультсериал'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2023,
         duration: 7,
         keywords: ['Тачка', 'Авто', 'Мульт'],
         description: 'Шытырман оқиғалы мультсериал Елбасының «Ұлы даланың жеті қыры» бағдарламасы аясында жүзеге асырылған. Мақалада қызғалдақтардың отаны Қазақстан екені айтылады. Ал, жоба қызғалдақтардың отаны – Алатау баурайы екенін анимация тілінде дәлелдей түседі. If you want to increase your knowledge of 3D design with Aarón, you can also take some of his other courses: Characters in Cinema 4D: from the Sketch to 3D Printing, Prototypes and Product Viewing in Cinema 4D, Compositions with Cinema 4D and OctaneRender, 3D Illustration with 4D Cinema 4D.',
@@ -436,9 +436,9 @@ export const mocksProjects = [
             ]
         },
         stats: {
-            views: 10329,
-            favorites: 4,
-            shares: 43,
+            views: 6329,
+            favorites: 6,
+            shares: 73,
 
         }
     },
@@ -467,9 +467,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 79659,
+            favorites: 74,
+            shares: 473,
 
         }
     },
@@ -479,7 +479,7 @@ export const mocksProjects = [
         categories: ['Телехикая','Мультфильм'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2022,
         duration: 7,
         keywords: ['Тачка', 'Авто', 'Мульт'],
         description: '',
@@ -502,9 +502,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 15201,
-            favorites: 4,
-            shares: 43,
+            views: 16201,
+            favorites: 46,
+            shares: 436,
 
         }
     },
@@ -514,7 +514,7 @@ export const mocksProjects = [
         categories: ['Телехикая'],
         type: 'Фильм',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2001,
         duration: 60,
         keywords: ['Тачка', 'Мульт'],
         description: '',
@@ -533,9 +533,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 9759,
+            favorites: 6,
+            shares: 53,
 
         }
     },
@@ -545,7 +545,7 @@ export const mocksProjects = [
         categories: ['Телехикая','Мультсериал'],
         type: 'Сериал',
         ageCategories: ['8-10', '10-12'],
-        year: 2020,
+        year: 2005,
         duration: 7,
         keywords: ['Тачка', 'Авто', 'Мульт'],
         description: 'Шытырман оқиғалы мультсериал Елбасының «Ұлы даланың жеті қыры» бағдарламасы аясында жүзеге асырылған. Мақалада қызғалдақтардың отаны Қазақстан екені айтылады. Ал, жоба қызғалдақтардың отаны – Алатау баурайы екенін анимация тілінде дәлелдей түседі. If you want to increase your knowledge of 3D design with Aarón, you can also take some of his other courses: Characters in Cinema 4D: from the Sketch to 3D Printing, Prototypes and Product Viewing in Cinema 4D, Compositions with Cinema 4D and OctaneRender, 3D Illustration with 4D Cinema 4D.',
@@ -591,9 +591,9 @@ export const mocksProjects = [
              ]
         },
         stats: {
-            views: 10329,
-            favorites: 4,
-            shares: 43,
+            views: 12329,
+            favorites: 24,
+            shares: 243,
 
         }
     },
@@ -622,9 +622,9 @@ export const mocksProjects = [
             screenShots: []
         },
         stats: {
-            views: 9659,
-            favorites: 4,
-            shares: 43,
+            views: 65659,
+            favorites: 46,
+            shares: 436,
 
         }
     },

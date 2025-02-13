@@ -1,4 +1,3 @@
-import "./AddEditHomeModal.css";
 import "../Modals.css";
 import close from ".././../../assets/icons/close.svg";
 import PropTypes from "prop-types";
@@ -15,28 +14,30 @@ export default function AddEditHomeModal({
   onUpdate,
   closeModal,
 }) {
-const { data } = useContext(DataContext);
-const projectsTitlesList = data.projects.map((project) => project.title);
-const searchProjectId = (title) => {
+  const { data } = useContext(DataContext);
+  const projectsTitlesList =
+    data?.projects?.map((project) => project.title) || [];
+  const searchProjectId = (title) => {
     if (!title) {
-        return '';
+      return "";
     }
     const project = data.projects.find((project) => project.title === title);
     return project.id;
-};
+  };
 
-const searchProjectTitle = (projectId) => {
+  const searchProjectTitle = (projectId) => {
     if (!projectId) {
-        return null;
+      return null;
     }
     const project = data.projects.find((project) => project.id === projectId);
     return project.title;
-}
+  };
 
-const [image, setImage] = useState(entity?.image  || "");
-const [selectedOrder, setSelectedOrder] = useState(entity?.order || "");
-const [selectedProjectTitle, setSelectedProjectTitle] = useState(searchProjectTitle(entity?.projectId) || "");
-
+  const [image, setImage] = useState(entity?.image || "");
+  const [selectedOrder, setSelectedOrder] = useState(entity?.order || "");
+  const [selectedProjectTitle, setSelectedProjectTitle] = useState(
+    searchProjectTitle(entity?.projectId) || ""
+  );
 
   const title =
     mode === "add"
@@ -58,15 +59,20 @@ const [selectedProjectTitle, setSelectedProjectTitle] = useState(searchProjectTi
       return;
     }
     if (!selectedProjectTitle) {
-        alert("Выберете проект");
-        return;
-      }
+      alert("Выберете проект");
+      return;
+    }
     if (!image) {
       alert("Добавьте изображение");
       return;
     }
 
-    const newEntity = { projectId: searchProjectId(selectedProjectTitle), order: selectedOrder, image };
+    const newEntity = {
+      id: mode === 'edit' ? entity.id : Date.now(),
+      projectId: searchProjectId(selectedProjectTitle),
+      order: selectedOrder,
+      image,
+    };
     mode === "edit" ? onUpdate(newEntity) : onAdd(newEntity);
   };
 
@@ -126,13 +132,14 @@ const [selectedProjectTitle, setSelectedProjectTitle] = useState(searchProjectTi
 }
 
 AddEditHomeModal.propTypes = {
-    mode: PropTypes.oneOf(["add", "edit"]).isRequired,
-    onAdd: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired,
-    closeModal: PropTypes.func.isRequired,
-    entity: PropTypes.shape({
-            projectId: PropTypes.number,
-            order: PropTypes.number,
-            image: PropTypes.string,
-    }),
-}
+  mode: PropTypes.oneOf(["add", "edit"]).isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  entity: PropTypes.shape({
+    id: PropTypes.number,
+    projectId: PropTypes.number,
+    order: PropTypes.number,
+    image: PropTypes.string,
+  }),
+};

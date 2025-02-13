@@ -41,6 +41,6 @@ ContentCard.propTypes = {
     label: PropTypes.string.isRequired,
     image: PropTypes.string,
 }).isRequired,
-    onEdit: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func,
+    onDelete: PropTypes.func,
 };

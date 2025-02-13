@@ -1,4 +1,5 @@
 .dropdown-filter {
+    position: relative;
     width: min-content;
     margin: 0 0 40px 0;
     padding: 8px 12px;
@@ -14,12 +15,13 @@
 
 .dropdown-label {
     padding: 0;
+    display: flex;
     font-weight: 500;
+    align-items: center;
     color: rgba(143, 146, 161, 1);
 }
 
 .dropdown {
-    position: relative;
     display: inline-block;
     cursor: pointer;
     border-radius: 8px;
@@ -43,8 +45,9 @@
 
 .dropdown-options {
     position: absolute;
+    white-space: nowrap;
     top: 100%;
-    left: 0;
+    right: 0;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -53,7 +56,17 @@
     list-style: none;
     margin: 0;
     padding: 8px 0;
-    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-options::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-options::-webkit-scrollbar-thumb {
+    background-color: #7E2DFC;;
+    border-radius: 4px;
 }
 
 .dropdown-option {

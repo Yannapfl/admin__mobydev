@@ -17,6 +17,12 @@
     transition: all 0.3s ease;
 }
 
+.content-featured-card:hover {
+    color: #0052CC; 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
 .img-contaner-featured-card {
     margin-bottom: 16px;
     width: 506px;

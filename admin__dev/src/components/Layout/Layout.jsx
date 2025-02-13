@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import { DataProvider } from "../../contexts/DataContext";
 import { FeaturedProjectsProvider } from "../../contexts/FeaturedProjectsContext";
+import { RolesProvider } from "../../contexts/RolesContext";
 
 export default function Layout() {
   const location = useLocation();
@@ -25,11 +26,13 @@ export default function Layout() {
       <div className="flex-body">
         <Navigation />
         <main className={mainClassName}>
-          <DataProvider>
-              <FeaturedProjectsProvider>
-                <Outlet />
-              </FeaturedProjectsProvider>
-          </DataProvider>
+          <RolesProvider>
+            <DataProvider>
+                <FeaturedProjectsProvider>
+                  <Outlet />
+                </FeaturedProjectsProvider>
+            </DataProvider>
+          </RolesProvider>
         </main>
       </div>
     </div>

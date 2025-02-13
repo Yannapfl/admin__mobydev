@@ -3,7 +3,7 @@ import './NumericStepperInput.css'
 import PropTypes from 'prop-types';
 
 export default function NumericStepperInput({ placeholder, selectedValue, setSelectedValue }) {
-    const [value, setValue ] = useState(selectedValue || 0);
+    const [value, setValue ] = useState(selectedValue || '');
     const [hasError, setHasError] = useState(false);
 
     const handleInputChange = (e) => {
@@ -41,7 +41,7 @@ export default function NumericStepperInput({ placeholder, selectedValue, setSel
         <div className="input-wrapper-main-info">
             <input
                 type='text'
-                value={value || null}
+                value={value ?? ''}
                 placeholder={placeholder}
                 onChange={handleInputChange}
                 className={` ${hasError ? 'input-error' : 'input-main-info'} ${selectedValue === null ? '' : 'filled'}`}

@@ -15,6 +15,7 @@ import VideoPlayer from "../../../components/VideoPlayer/VideoPlayer";
 import DataContext from "../../../contexts/DataContext";
 import { useModalManager } from "../../../components/Modals/useModalManager";
 import { ModalFactory } from "../../../components/Modals/ModalFactory";
+import useRoleAccess from "../../../utils/useRoleAccess";
 
 export default function ProjectInfo() {
   const { projectId } = useParams();
@@ -23,6 +24,8 @@ export default function ProjectInfo() {
   const { modalType, modalProps, openModal, closeModal } = useModalManager();
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedEpisode, setSelectedEpisode] = useState(1);
+  const { canEdit } = useRoleAccess();
+  const editKey = "projects";
 
   const project = data.projects.find((proj) => proj.id === parseInt(projectId));
   const maxCountEpisodesInLine = 10;
@@ -44,11 +47,11 @@ export default function ProjectInfo() {
   const handleSeasonChange = (season) => {
     setSelectedSeason(season);
     setSelectedEpisode(1);
-  }
+  };
 
   const handleEpisodeChange = (episode) => {
     setSelectedEpisode(episode);
-  }
+  };
 
   return (
     <div className="project">
@@ -85,14 +88,28 @@ export default function ProjectInfo() {
               </div>
             </div>
             <div className="project-info-btn-group">
-              <button className="btn-grey" onClick={() => navigate(`/projects/edit/${projectId}`)}>Редактировать</button>
-              <button 
+              <button
+                disabled={!canEdit(editKey)}
+                style={{ opacity: canEdit(editKey) ? 1 : 0.5 }}
+                className="btn-grey"
+                onClick={() => navigate(`/projects/edit/${projectId}`)}
+              >
+                Редактировать
+              </button>
+              <button
+                disabled={!canEdit(editKey)}
+                style={{ opacity: canEdit(editKey) ? 1 : 0.5 }}
                 className="btn-red"
-                onClick={() => openModal('delete', { label: 'проект', onConfirm: () => {
-                  deleteEntity('projects', project.id);
-                  closeModal();
-                  navigate('/projects');
-                } })}
+                onClick={() =>
+                  openModal("delete", {
+                    label: "проект",
+                    onConfirm: () => {
+                      deleteEntity("projects", project.id);
+                      closeModal();
+                      navigate("/projects");
+                    },
+                  })
+                }
               >
                 <img src={wastebasket} alt="wastebasket" />
               </button>
@@ -112,49 +129,64 @@ export default function ProjectInfo() {
                 return (
                   <div className="switcher-block">
                     <div className="project-video-block">
-                      {<VideoPlayer videoId={project.video.episodes.find(
-                        (ep) => ep.season === selectedSeason && ep.episode === selectedEpisode
-                          )?.videoId} />
-                        }
+                      {
+                        <VideoPlayer
+                          videoId={
+                            project.video.episodes.find(
+                              (ep) =>
+                                ep.season === selectedSeason &&
+                                ep.episode === selectedEpisode
+                            )?.videoId
+                          }
+                        />
+                      }
                     </div>
                     <div className="switcher-seasons">
-                      {Array.from({ length: project.video.seasonCount }).map((_, index) => (
-                        <button
-                          key={index}
-                          className={`btn-season${selectedSeason === index + 1 ? " active" : ""}`}
-                          onClick={() => handleSeasonChange(index + 1)}
-                        >
-                          {index + 1} сезон
-                        </button>
-                      ))}
+                      {Array.from({ length: project.video.seasonCount }).map(
+                        (_, index) => (
+                          <button
+                            key={index}
+                            className={`btn-season${
+                              selectedSeason === index + 1 ? " active" : ""
+                            }`}
+                            onClick={() => handleSeasonChange(index + 1)}
+                          >
+                            {index + 1} сезон
+                          </button>
+                        )
+                      )}
                     </div>
                     <div className="switcher-episodes">
                       {project.video.episodes
-                      .filter((ep) => ep.season === selectedSeason)
-                      .map((ep, index) => (
-                        <button
-                          key={index}
-                          className={`btn-img btn-episode ${selectedEpisode === index + 1 ? "active" : ""}`}
-                          onClick={() => handleEpisodeChange(ep.episode)}
-                        >
-                          {ep.episode} серия
-                        </button>
-                      ))
-                      }
+                        .filter((ep) => ep.season === selectedSeason)
+                        .map((ep, index) => (
+                          <button
+                            key={index}
+                            className={`btn-img btn-episode ${
+                              selectedEpisode === index + 1 ? "active" : ""
+                            }`}
+                            onClick={() => handleEpisodeChange(ep.episode)}
+                          >
+                            {ep.episode} серия
+                          </button>
+                        ))}
                     </div>
                     <div className="project-info-line">
-                    {selectedEpisode && (
-                      <div className="wrapper-active-line">
-                      <div
-                        className="active-line"
-                        style={{
-                          left: `${((selectedEpisode - 1) % maxCountEpisodesInLine) * (100 / maxCountEpisodesInLine)}%`,
-                    }}
-              ></div>
-              </div>
-            )}
+                      {selectedEpisode && (
+                        <div className="wrapper-active-line">
+                          <div
+                            className="active-line"
+                            style={{
+                              left: `${
+                                ((selectedEpisode - 1) %
+                                  maxCountEpisodesInLine) *
+                                (100 / maxCountEpisodesInLine)
+                              }%`,
+                            }}
+                          ></div>
+                        </div>
+                      )}
                     </div>
-
                   </div>
                 );
               default:
@@ -184,18 +216,16 @@ export default function ProjectInfo() {
             <div className="project-info-screenshots-group">
               {project.media.screenShots.map((screenshotObj) => (
                 <div key={screenshotObj.id} className="img-container">
-                <img
-                key={screenshotObj.id}
-                className="project-info-screenshot"
-                src={screenshotObj.image}
-                alt="screenshot"
-              />
-              </div>
+                  <img
+                    key={screenshotObj.id}
+                    className="project-info-screenshot"
+                    src={screenshotObj.image}
+                    alt="screenshot"
+                  />
+                </div>
               ))}
             </div>
           </div>
-
-
         </div>
       </div>
       {/* Белое инфо сбоку */}
@@ -244,21 +274,20 @@ export default function ProjectInfo() {
           </div>
         </div>
       </div>
-    {modalType && (
-      <ModalFactory
-      type={modalType}
-      modalProps={{
-        ...modalProps,
-        label: 'проект',
-        onDelete: () => {
-          deleteEntity('projects', modalProps.entity?.id);
-          closeModal();
-        },
-        closeModal,
-      }}
+      {modalType && (
+        <ModalFactory
+          type={modalType}
+          modalProps={{
+            ...modalProps,
+            label: "проект",
+            onDelete: () => {
+              deleteEntity("projects", modalProps.entity?.id);
+              closeModal();
+            },
+            closeModal,
+          }}
         />
-    )}
-
+      )}
     </div>
   );
 }

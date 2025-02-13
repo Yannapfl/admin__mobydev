@@ -1,0 +1,45 @@
+.users-cards-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 260px);
+    gap: 18px;
+}
+
+.card-user {
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff; 
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.card-user:hover {
+    color: #0052CC; 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.blue-box-user {
+    margin: 4px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    padding: 12px 15px;
+    background-color: #0052CC;
+    color: #ffffff;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.blue-box-user h4 {
+    font-weight: 700;
+}
+
+.text-user-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+}

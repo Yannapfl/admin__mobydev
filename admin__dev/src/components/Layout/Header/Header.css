@@ -6,6 +6,7 @@
 
 .header-left img {
     padding-left: 32px;
+    cursor: pointer;
 }
 
 .header form {

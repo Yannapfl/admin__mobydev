@@ -1,0 +1,24 @@
+.search-result .page-header {
+    margin-bottom: 16px;
+}
+
+.result-switcher {
+    margin-right:-48px;
+    margin-left: -48px;
+    margin-bottom: 40px;
+    padding-top: 7px;
+    background-color: white;
+}
+
+.result-switcher .edit-switcher-block {
+    margin-left: 48px;
+}
+
+.result-switcher .wrapper-active-line {
+    margin: 0;
+}
+
+.result-switcher .project-info-line {
+    margin: 0 0 0 -48px;
+    width: calc(100% + 46px);
+}

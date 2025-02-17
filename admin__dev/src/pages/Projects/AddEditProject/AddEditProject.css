@@ -16,40 +16,10 @@
     background-color: rgba(143, 146, 161, 0.1);
 }
 
-.sections-projects-edit {
-    margin-bottom: 13px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 40px;
-}
-
-.switcher-section-edit {
-    line-height: 24px;
-    font-weight: 700;
-    color: #8F92A1;
-}
-
-.switcher-section-edit.active {
-    color: #0052CC;
-}
-
 
 .project-info-line {
     position: relative;
     margin: 0 -32px 32px -32px;
-}
-
-.wrapper-active-line {
-    margin: auto;
-}
-
-.active-line {
-    position: absolute; 
-    height: 2px;
-    background-color: blue; 
-    border-radius: 16px 16px 0 0;
-    transition: all 0.3s ease;
 }
 
 .input-main-info {

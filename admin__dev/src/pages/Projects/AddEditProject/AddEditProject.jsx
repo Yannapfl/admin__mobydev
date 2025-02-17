@@ -12,6 +12,7 @@ import { emptyProjectStructure } from "../../../mocks/mocksProjectStructure";
 import { useModalManager } from "../../../components/Modals/useModalManager";
 import { ModalFactory } from "../../../components/Modals/ModalFactory";
 import { useSelector } from "react-redux";
+import SectionSwitcher from "../../../components/SectionSwitcher/SectionSwitcher";
 
 export default function AddEditProject({ mode }) {
   const navigate = useNavigate();
@@ -21,76 +22,67 @@ export default function AddEditProject({ mode }) {
   const { modalType, openModal, closeModal } = useModalManager();
   const user = useSelector((state) => state.auth.user);
 
-  const project = mode === 'edit' ? data.projects.find((proj) => proj.id === parseInt(projectId)) 
-  : { ...emptyProjectStructure,
-    video: (emptyProjectStructure.type === 'Фильм') 
-      ? { videoId: '',  seasonCount: 0, episodes: [] } 
-      : { seasonCount: 1, episodes: [] }
-  };
+  const project =
+    mode === "edit"
+      ? data.projects.find((proj) => proj.id === parseInt(projectId))
+      : {
+          ...emptyProjectStructure,
+          video:
+            emptyProjectStructure.type === "Фильм"
+              ? { videoId: "", seasonCount: 0, episodes: [] }
+              : { seasonCount: 1, episodes: [] },
+        };
 
   const namePath = mode === "edit" ? "Редактировать проект" : "Добавить проект";
   const sections = ["Основная информация", "Видео", "Обложка и скриншоты"];
   const pageTitle =
     mode === "edit" ? `Редактировать ${project.title || ""}` : sections[0];
 
-  const letterWidth = 8.5;
-  const tabSpacing = 40;
-
   const [activeSection, setActiveSection] = useState(sections[0]);
   const [tempProject, setTempProject] = useState(project);
   const [selectedType, setSelectedType] = useState(tempProject?.type || "");
 
-  const handleSectionChange = (section) => setActiveSection(section);
-
   const handleSkip = () => {
     const currentIndex = sections.indexOf(activeSection);
-    setActiveSection(sections[currentIndex + 1]);  
+    setActiveSection(sections[currentIndex + 1]);
   };
-  
+
   const handleReturn = () => {
     const currentIndex = sections.indexOf(activeSection);
     setActiveSection(sections[currentIndex - 1]);
   };
 
-  const getLeftTab = sections
-    .slice(0, sections.indexOf(activeSection))
-    .reduce(
-      (acc, section) => acc + section.length * letterWidth + tabSpacing,
-      0
-    );
-
-    const handleSaveProject = () => {
-        try {
-            const updatedProject = {
-              ...tempProject,
-              updatedAt: Date.now(),
-            };
-            setTempProject(updatedProject);
-            updateEntity('projects', updatedProject);
-            navigate("/projects");
-          } catch (error) {
-            console.error("Error saving project:", error);
-            alert("Failed to save project. Please try again.");
-          }
-
-    };
-
-    const handleAddProject = () => {
-        try {
-            const newProject = {
-            ...tempProject,
-            updatedAt: Date.now(),
-            createdAt: Date.now(),
-            id: Date.now(),
-            createdBy: user.name,
-          };
-          setTempProject(newProject);
-          addEntity('projects', newProject);
-        } catch (error) {
-            console.error("Error adding project:", error);
-            alert("Failed to add project. Please try again.");
-          }
+  const handleSaveProject = () => {
+    try {
+      const updatedProject = {
+        ...tempProject,
+        updatedAt: Date.now(),
+      };
+      setTempProject(updatedProject);
+      updateEntity("projects", updatedProject);
+      navigate("/projects");
+    } catch (error) {
+      console.error("Error saving project:", error);
+      alert("Failed to save project. Please try again.");
     }
+  };
+
+  const handleAddProject = () => {
+    try {
+      const newProject = {
+        ...tempProject,
+        updatedAt: Date.now(),
+        createdAt: Date.now(),
+        id: Date.now(),
+        createdBy: user.name,
+      };
+      setTempProject(newProject);
+      addEntity("projects", newProject);
+    } catch (error) {
+      console.error("Error adding project:", error);
+      alert("Failed to add project. Please try again.");
+    }
+  };
 
   return (
     <div className="add-edit-project">
@@ -117,33 +109,7 @@ export default function AddEditProject({ mode }) {
             <h1 className="m-0">{pageTitle}</h1>
           </div>
           {mode === "edit" && (
-            <div className="edit-switcher-block">
-              <div className="sections-projects-edit">
-                {sections.map((section) => (
-                  <button
-                    key={section}
-                    className={`btn-img btn-text switcher-section-edit ${
-                      activeSection === section ? "active" : ""
-                    }`}
-                    onClick={() => handleSectionChange(section)}
-                  >
-                    {section}
-                  </button>
-                ))}
-              </div>
-              <div className="wrapper-active-line">
-                {activeSection && (
-                  <div
-                    className="active-line"
-                    style={{
-                      left: `${getLeftTab}px`,
-                      width: `${activeSection.length * letterWidth}px`,
-                    }}
-                  ></div>
-                )}
-              </div>
-              <div className="project-info-line"></div>
-            </div>
+            <SectionSwitcher sections={sections} onActive={setActiveSection} />
           )}
           <div className="sections-block-project-edit">
             {activeSection === sections[0] && (
@@ -156,101 +122,127 @@ export default function AddEditProject({ mode }) {
             )}
 
             {activeSection === sections[1] && (
-                <VideoSection
+              <VideoSection
                 selectedType={selectedType}
                 tempProject={tempProject}
                 setTempProject={setTempProject}
                 setIsFilledSection={setIsFilledSection}
-                />
-                
+              />
             )}
 
             {activeSection === sections[2] && (
-                <MediaSection
+              <MediaSection
                 tempProject={tempProject}
                 setTempProject={setTempProject}
                 setIsFilledSection={setIsFilledSection}
-                />
+              />
             )}
           </div>
 
-         
-          {mode === 'add' ? (
-  <>
-    {activeSection === sections[0] && (
-      <div className="project-edit-btn-group">
-        <button 
-          className={`btn-skip ${!isFilledSection ? 'disable' : ''} btn`} 
-          disabled={!isFilledSection} 
-          onClick={handleSkip}>
-          Далее
-        </button>
-        <button className="btn btn-grey" onClick={() => navigate("/projects")}>
-          Отмена
-        </button>
-      </div>
-    )}
+          {mode === "add" ? (
+            <>
+              {activeSection === sections[0] && (
+                <div className="project-edit-btn-group">
+                  <button
+                    className={`btn-skip ${
+                      !isFilledSection ? "disable" : ""
+                    } btn`}
+                    disabled={!isFilledSection}
+                    onClick={handleSkip}
+                  >
+                    Далее
+                  </button>
+                  <button
+                    className="btn btn-grey"
+                    onClick={() => navigate("/projects")}
+                  >
+                    Отмена
+                  </button>
+                </div>
+              )}
 
-    {activeSection !== sections[0] && activeSection !== sections[sections.length - 1] && (
-      <div className="project-edit-btn-group g-350">
-        <button className="btn btn-grey" onClick={handleReturn}>Назад</button>
-        <div className="right-btn-group">
-          <button 
-            className={`btn-skip ${!isFilledSection ? 'disable' : ''} btn`} 
-            onClick={handleSkip} 
-            disabled={!isFilledSection}>
-            Далее
-          </button>
-          <button className="btn btn-grey" onClick={() => navigate("/projects")}>
-            Отмена
-          </button>
-        </div>
-      </div>
-    )}
+              {activeSection !== sections[0] &&
+                activeSection !== sections[sections.length - 1] && (
+                  <div className="project-edit-btn-group g-350">
+                    <button className="btn btn-grey" onClick={handleReturn}>
+                      Назад
+                    </button>
+                    <div className="right-btn-group">
+                      <button
+                        className={`btn-skip ${
+                          !isFilledSection ? "disable" : ""
+                        } btn`}
+                        onClick={handleSkip}
+                        disabled={!isFilledSection}
+                      >
+                        Далее
+                      </button>
+                      <button
+                        className="btn btn-grey"
+                        onClick={() => navigate("/projects")}
+                      >
+                        Отмена
+                      </button>
+                    </div>
+                  </div>
+                )}
 
-    {activeSection === sections[sections.length - 1] && (
-      <div className="project-edit-btn-group g-350">
-        <button className="btn btn-grey" onClick={handleReturn}>Назад</button>
-        <div className="right-btn-group">
-          {isFilledSection ? (
-            <button className="btn" onClick={() => {
-              handleAddProject();
-              openModal('success');
-            }}>Добавить</button>
+              {activeSection === sections[sections.length - 1] && (
+                <div className="project-edit-btn-group g-350">
+                  <button className="btn btn-grey" onClick={handleReturn}>
+                    Назад
+                  </button>
+                  <div className="right-btn-group">
+                    {isFilledSection ? (
+                      <button
+                        className="btn"
+                        onClick={() => {
+                          handleAddProject();
+                          openModal("success");
+                        }}
+                      >
+                        Добавить
+                      </button>
+                    ) : (
+                      <button className={`btn-skip disable btn`} disabled>
+                        Далее
+                      </button>
+                    )}
+                    <button
+                      className="btn btn-grey"
+                      onClick={() => navigate("/projects")}
+                    >
+                      Отмена
+                    </button>
+                  </div>
+                </div>
+              )}
+            </>
           ) : (
-            <button className={`btn-skip disable btn`} disabled>
-              Далее
-            </button>
+            <div className="project-edit-btn-group">
+              <button className="btn" onClick={handleSaveProject}>
+                Сохранить
+              </button>
+              <button
+                className="btn btn-grey"
+                onClick={() => navigate("/projects")}
+              >
+                Отмена
+              </button>
+            </div>
           )}
-          <button className="btn btn-grey" onClick={() => navigate("/projects")}>
-            Отмена
-          </button>
-        </div>
-      </div>
-    )}
-  </>
-) : (
-  <div className="project-edit-btn-group">
-    <button className="btn" onClick={handleSaveProject}>Сохранить</button>
-    <button className="btn btn-grey" onClick={() => navigate("/projects")}>
-      Отмена
-    </button>
-  </div>
-)}
-
-              
         </div>
       </div>
       <div className="white-block"></div>
-    {modalType && (
+      {modalType && (
         <ModalFactory
-        type={modalType}
-        modalProps={{
+          type={modalType}
+          modalProps={{
             closeModal,
             navigate,
-        }}
+          }}
         />
-    )}
+      )}
     </div>
   );
 }

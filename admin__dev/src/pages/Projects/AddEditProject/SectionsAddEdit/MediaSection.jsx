@@ -61,7 +61,6 @@ export default function MediaSection({ tempProject, setTempProject, setIsFilledS
         <div className={`coverage-block ${coverImageInput ? "filled" : ""}`}>
             <h1>Обложка</h1>
             <h4 className="mb-16">Рекомендуется использовать картинки размером не менее 375×550px</h4>
-            {console.info(coverImageInput)}
             {coverImageInput !== '' ? (
                 <div className="cover-img-preview">
                     <div className="cover-img-preview-contaiiner">

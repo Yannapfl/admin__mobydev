@@ -41,6 +41,11 @@ export default function ImgEditAddModal({
     setImage("");
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSave();
+  }
+
   return (
     <div className="modal">
       <div className="modal-content">
@@ -51,7 +56,7 @@ export default function ImgEditAddModal({
           </button>
         </div>
         <div className="border-line m-0"></div>
-        <form className="modal-form">
+        <form className="modal-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder={`Название ${labelPrepositional}`}
@@ -74,7 +79,7 @@ export default function ImgEditAddModal({
             <UploadImageWindow onImageUpload={setImage} />
           )}
           <div className="modal-btn-group">
-            <button type="button" onClick={handleSave}>
+            <button type="submit">
               {buttonText}
             </button>
             <button type="button" className="btn-grey" onClick={closeModal}>

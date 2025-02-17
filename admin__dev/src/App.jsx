@@ -12,6 +12,7 @@ import Genres from "./pages/Genres/Genres";
 import Ages from "./pages/Ages/Ages";
 import ProjectInfo from "./pages/Projects/ProjectInfo/ProjectInfo.jsx";
 import AddEditProject from "./pages/Projects/AddEditProject/AddEditProject.jsx";
+import SearchResult from "./pages/SearchResult/SearchResult.jsx";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="roles" element={<Roles />} />
           <Route path="genres" element={<Genres />} />
           <Route path="ages" element={<Ages />} />
+          <Route path="result" element={<SearchResult />} />
         </Route>
       </Routes>
     </BrowserRouter>

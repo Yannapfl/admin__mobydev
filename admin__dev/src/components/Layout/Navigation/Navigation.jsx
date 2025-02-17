@@ -40,6 +40,7 @@ export default function Navigation() {
         <ul>
           <li>
             <NavLink to="/projects" className={({ isActive }) => (isActive ? "active" : "")}>
+              <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.projects }}
@@ -49,6 +50,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink to="/home-projects" className={({ isActive }) => (isActive ? "active" : "")}>
+            <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.home }}
@@ -58,6 +60,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink to="/categories" className={({ isActive }) => (isActive ? "active" : "")}>
+            <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.categories }}
@@ -67,6 +70,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink to="/users" className={({ isActive }) => (isActive ? "active" : "")}>
+            <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.users }}
@@ -76,6 +80,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink to="/roles" className={({ isActive }) => (isActive ? "active" : "")}>
+            <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.roles }}
@@ -85,6 +90,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink to="/genres" className={({ isActive }) => (isActive ? "active" : "")}>
+            <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.genres }}
@@ -94,6 +100,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink to="/ages" className={({ isActive }) => (isActive ? "active" : "")}>
+              <div className="nav-active-line"></div>
               <span
                 className="icon"
                 dangerouslySetInnerHTML={{ __html: icons.ages }}

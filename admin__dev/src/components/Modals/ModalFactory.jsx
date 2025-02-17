@@ -6,6 +6,7 @@ import { TextEditModal } from "./TextEditModal/TextEditModal";
 import PropTypes from "prop-types";
 import UserModal from "./UserModal/UserModal";
 import { RoleModal } from "./RoleModal/RoleModal";
+import { ExitModal } from "./ExitModal/ExitModal";
 
 export function ModalFactory({ type, modalProps }) {
     switch (type) {
@@ -22,7 +23,9 @@ export function ModalFactory({ type, modalProps }) {
         case 'userCard':
             return <UserModal {...modalProps} />
         case 'roleModal':
-            return <RoleModal {...modalProps} />    
+            return <RoleModal {...modalProps} /> 
+        case 'exit':
+                return <ExitModal {...modalProps} />        
         default:
             return null;
     }

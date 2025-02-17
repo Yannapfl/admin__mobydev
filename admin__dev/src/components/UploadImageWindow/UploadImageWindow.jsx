@@ -16,7 +16,7 @@ export const UploadImageWindow = ({ onImageUpload }) => {
     onDrop,
     accept: "image/*",
     noClick: true,
-    noKeyboard: true,
+    onKeyboard: true,
   });
 
   return (

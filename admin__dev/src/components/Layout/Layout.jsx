@@ -17,6 +17,7 @@ export default function Layout() {
     "/roles",
     "/genres",
     "/ages",
+    "/result",
   ].includes(location.pathname);
   const mainClassName = isNavigationPage ? "content-nav" : "m-0";
 

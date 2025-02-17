@@ -41,7 +41,7 @@ export function TextEditModal({
           </button>
         </div>
         <div className="border-line m-0"></div>
-        <form className="modal-form">
+        <form className="modal-form" onSubmit={handleSave}>
           <input
             type="text"
             placeholder={`Название ${labelPrepositional}`}
@@ -49,7 +49,7 @@ export function TextEditModal({
             onChange={(e) => setLabel(e.target.value)}
           />
           <div className="modal-btn-group">
-            <button type="button" onClick={handleSave}>
+            <button type="submit">
               {buttonText}
             </button>
             <button type="button" className="btn-grey" onClick={closeModal}>

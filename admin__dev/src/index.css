@@ -214,4 +214,7 @@ textarea {
   gap: 16px;
 }
 
-
+.project-info-line {
+  position: relative;
+  margin: 0 -32px 32px -32px;
+}

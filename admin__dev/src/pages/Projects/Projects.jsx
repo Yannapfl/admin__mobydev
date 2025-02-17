@@ -70,7 +70,7 @@ export default function Projects() {
       selectedCategory === "Все" ? true : categories.includes(selectedCategory)
     )
     .filter(({ year }) =>
-      selectedYear === "Выберите год" ? true : selectedYear === year
+      selectedYear === "Выберите год" ? true : selectedYear == year
     )
     .sort((a, b) => {
       if (selectedSort === "Популярные") return b.stats.views - a.stats.views;

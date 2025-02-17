@@ -14,8 +14,8 @@ span {
     color: #171717;
 }
 
-.navigation ul li a .icon {
-    color: #8F92A1;
+.navigation ul li .icon {
+    fill: #8F92A1;
   }
 
 .navigation ul li a {
@@ -25,13 +25,14 @@ span {
 
 .navigation ul li a.active span {
     color: #7E2DFC;
+    fill: #7E2DFC;
 }
 
 .icon {
     display: inline-block;
     width: 18px;
     height: 18px;
-    fill: currentColor;
+    fill: #8F92A1;
 }
 
 .navigation .nav-active-line {
@@ -40,14 +41,12 @@ span {
     background-color: #7E2DFC;
     position: absolute;
     top: 9px;
-    left: -10px;
+    left: -20px;
     display: none;
     border-radius: 0 100px 100px 0;
-    transition:  1s ease-in-out;
   }
   
   .navigation .active .nav-active-line {
     display: block;
-    transform: scaleY(1);
   }
   

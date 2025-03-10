@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + Vite
 
 <h3>Admin panel Ozinse<h3>
@@ -6,10 +7,6 @@
 
 start: 
 npm run dev
-
-You can use mock for authorisiation.
-login: test@example.com
-password: password123
 
 <uL>Functionality: 
     <li>Add, edit delete projects, categories, genres, ages.</li>

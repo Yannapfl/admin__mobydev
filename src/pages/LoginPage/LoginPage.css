@@ -1,0 +1,71 @@
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: #f0f4fa;
+}
+
+.logo-icon {
+    margin: 64px;
+}
+
+.login-form {
+    width: 360px;
+    height: 387px;
+}
+
+.text-center h1 {
+    margin-top: 0;
+    line-height: 30px;
+}
+
+.text-center a {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.password-input {
+    position: relative;
+    z-index: 1;
+}
+
+.password-input input {
+    width: 100%;
+}
+
+.btn-submit {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.forget-password {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 15.23px;
+    color: #8F92A1;
+}
+
+.forget-password p {
+    margin-bottom: 0;
+}
+
+.forget-password a {
+    font-weight: 700;
+    color: #034ecb;
+}
+
+.m-top-12 {
+    margin-top: 12px;
+}
+
+.m-top-32 {
+    margin-top: 32px;
+}
+

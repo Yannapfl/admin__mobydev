@@ -23,7 +23,9 @@ span {
     align-items: flex-start;
 }
 
-.navigation ul li a.active span {
+.navigation ul li a.active span,
+.navigation ul li a.active .icon
+ {
     color: #7E2DFC;
     fill: #7E2DFC;
 }
@@ -44,6 +46,10 @@ span {
     left: -20px;
     display: none;
     border-radius: 0 100px 100px 0;
+  }
+
+  .nav-active-line .icon {
+    fill: #7E2DFC;
   }
   
   .navigation .active .nav-active-line {

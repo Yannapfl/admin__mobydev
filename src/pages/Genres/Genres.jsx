@@ -13,8 +13,6 @@ export default function Genres() {
   const { canEdit } = useRoleAccess();
   const editKey = "projects";
 
-  console.log('genres', data.genres);
-
   return (
     <div className="genres">
       <div className="page-header">

@@ -39,6 +39,7 @@ export const DataProvider = ({ children }) => {
         ...prev,
         [type]: updatedData.data.result,
       }));
+      fetchData(type, endpoint);
     } catch (error) {
       console.error(`Ошибка добавления в ${type}:`, error);
       console.log(error.response?.data)
@@ -61,6 +62,7 @@ export const DataProvider = ({ children }) => {
         ...prev,
         [type]: updatedData.data.result,
       }));
+      fetchData(type, endpoint)
     } catch (error) {
       console.error(`Ошибка обновления ${type}:`, error);
     }

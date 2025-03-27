@@ -60,7 +60,7 @@ export default function ImgEditAddModal({
     formData.append("name", name);
     try {
       const blob = await fetch(imageSrc).then((res) => res.blob());
-      const file = convertBlobToFile(blob, `${id}__image.png`);
+      const file = convertBlobToFile(blob, `${name}_${imageSrc}__image.png`);
 
       formData.append("image", file);
 

@@ -48,7 +48,7 @@ export default function Genres() {
                     openModal("delete", {
                       label: "жанр",
                       onConfirm: () => {
-                        deleteEntity("genres", genre.genreId);
+                        deleteEntity("genres", genre.genreId, 'genre');
                         closeModal();
                       },
                     })
